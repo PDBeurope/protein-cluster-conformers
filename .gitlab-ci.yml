@@ -1,0 +1,58 @@
+variables:
+  PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip
+  DOCKER_DRIVER: overlay2
+
+cache:
+  paths:
+    - .cache/pip
+  key: "$CI_PROJECT_ID"
+
+dockerbuild:
+  stage: build
+  before_script:
+    - docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password $CI_REGISTRY_PASSWORD
+  script:
+    - docker build --rm --cache-from $CI_REGISTRY_IMAGE:latest --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
+  needs: []
+  tags:
+    - pdbe-shell
+
+runtests:
+  stage: test
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  script:
+    - pip install pytest
+    - pip install -e .
+    - pytest
+  artifacts:
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+      junit: report.xml
+  needs: [dockerbuild]
+  tags:
+    - pdbe-docker
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+code_quality:
+  services: # Nothing here
+  tags:
+    - pdbe-shell
+
+wheel:
+  stage: deploy
+  script:
+    - pip install twine
+    - python setup.py sdist bdist_wheel
+    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${PIP_INDEX_URL%/simple} dist/*
+  artifacts:
+    paths:
+      - dist/
+  only:
+    refs:
+      - master
+  tags:
+    - pdbe-docker

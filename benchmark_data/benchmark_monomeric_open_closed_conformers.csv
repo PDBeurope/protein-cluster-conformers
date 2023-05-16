@@ -1,0 +1,371 @@
+,UNP_ACC,UNP_START,UNP_END,PDBe_ID,CHAIN_ID,label_asym_id,CONFORMER_ID,CONFORMER_DESCR,LIT_CONFIRMED,ALT_CONFORMER_ID,ALT_CONFORMER_DESCR,NOTES
+0,A0A075Q0W3,39,678,6mka,A,A,1,open,1,1,,"The structures between open and beta-lactam-bound adopt similar conformations and the primary differences are localised to the catalytic pocket (oxyanion hole). Unlike the closed conformation, therefore, which demonstrates a larger inward domain movement, CONFORMER_IDs 1 and 2 are globally similar in structure and could potentially be placed into the same conformation if merited by the use case."
+1,A0A075Q0W3,39,678,6mkf,A,A,2,open_liganded,1,2,,"The structures between open and beta-lactam-bound adopt similar conformations and the primary differences are localised to the catalytic pocket (oxyanion hole). Unlike the closed conformation, therefore, which demonstrates a larger inward domain movement, CONFORMER_IDs 1 and 2 are globally similar in structure and could potentially be placed into the same conformation if merited by the use case."
+2,A0A075Q0W3,39,678,6mkg,A,A,2,open_liganded,1,2,,"The structures between open and beta-lactam-bound adopt similar conformations and the primary differences are localised to the catalytic pocket (oxyanion hole). Unlike the closed conformation, therefore, which demonstrates a larger inward domain movement, CONFORMER_IDs 1 and 2 are globally similar in structure and could potentially be placed into the same conformation if merited by the use case."
+3,A0A075Q0W3,39,678,6mkj,A,A,3,closed,1,3,,"Closed conformation exhibits a relatively large inter-domain movement, bringing the N1 and N2 domains closer together, in contrast to binding of the other beta-lactams in 6mkg and 6mkf"
+4,A0A1J6PWI8,20,273,6jmx,A,A,1,open,1,1,,
+5,A0A1J6PWI8,20,273,6jn8,A,A,1,open,1,1,,
+6,A0A1J6PWI8,20,273,6jmy,A,A,2,closed,1,2,,
+7,A0A1J6PWI8,20,273,6jn7,A,A,2,closed,1,2,,
+8,A0A1J6PWI8,20,273,6jn7,B,B,2,closed,1,2,,
+9,A0A1J6PWI8,20,273,6jn7,C,C,2,closed,1,2,,
+10,A0A1J6PWI8,20,273,6kv1,A,A,2,closed,1,2,,
+11,A0QTT2,1,439,7cy2,A,A,1,open,1,1,,
+12,A0QTT2,1,439,7cyr,A,A,2,closed,1,2,,
+13,A0R629,13,412,5eqd,B,B,1,open,0,1,,"Pairwise RMSD comparison between chains in 5eqd and 5er9 show the two conformations in the asymmetric unit are different but identification of the closed and open structures is not possible alone. The open conformation is also nearly identical to the mixed conformation, with an RMSD of 0.000012 A over392 residues."
+14,A0R629,13,412,5eqd,A,A,2,closed,0,2,,"Pairwise RMSD comparison between chains in 5eqd and 5er9 show the two conformations in the asymmetric unit are different but identification of the closed and open structures is not possible alone. The open conformation is also nearly identical to the mixed conformation, with an RMSD of 0.000012 A over392 residues."
+15,A0R629,13,412,5er9,A,A,2,closed,0,2,,"Pairwise RMSD comparison between chains in 5eqd and 5er9 show the two conformations in the asymmetric unit are different but identification of the closed and open structures is not possible alone. The open conformation is also nearly identical to the mixed conformation, with an RMSD of 0.000012 A over392 residues."
+16,A0R629,13,412,5er9,B,B,3,mixed,0,1,,Almost identical in structure to open conformation (CONFORMER_ID=2)
+17,A2RJ53,24,600,3fto,A,A,1,open,1,,,
+18,A2RJ53,24,600,3drf,A,A,2,closed,1,,,Substrate = octapeptide
+19,A2RJ53,24,600,3drg,A,A,2,closed,1,,,Substrate = nonapeptide
+20,A6UVT1,1,342,6hac,A,A,1,open,1,,,
+21,A6UVT1,1,342,6hae,A,A,2,closed,1,,,
+22,A6UVT1,1,342,6hae,K,B,2,closed,1,,,
+23,A6UVT1,1,342,6hav,A,A,2,closed,1,,,
+24,B3EYN2,1,848,5ho2,A,A,1,open,0,,,
+25,B3EYN2,1,848,5ho0,A,A,2,closed,0,,,
+26,B7IE18,1,475,6nc7,A,A,1,open_inward,1,,,
+27,B7IE18,1,475,6nc7,B,B,1,open_inward,1,,,
+28,B7IE18,1,475,6nc8,A,A,2,occluded_inward,1,,,
+29,B7IE18,1,475,6nc9,A,A,3,occluded_outward,1,,,
+30,B7IE18,1,475,6nc6,A,A,4,closed_outward,1,,,
+31,B7IE18,1,475,6nc6,B,B,4,closed_outward,1,,,
+32,C7C425,1,418,6xcs,A,A,1,open,1,,,
+33,C7C425,1,418,6xcs,B,B,1,open,1,,,
+34,C7C425,1,418,6xcq,A,A,2,closed,1,,,
+35,G0S4S9,1,2925,6sl1,A,A,1,open,1,,,
+36,G0S4S9,1,2925,6skz,A,A,2,closed,1,,,
+37,G0SB58,24,1505,5mzo,A,A,1,open,1,,,
+38,G0SB58,24,1505,5mu1,A,A,2,intermediate,1,,,
+39,G0SB58,24,1505,5n2j,A,A,3,closed,1,,,
+40,G0SB58,24,1505,5n2j,B,B,3,closed,1,,,
+41,G0SB58,24,1505,5nv4,A,A,3,closed,1,,,Double Cys mutant to stabilise protein in the closed conformation
+42,J9UN47,25,609,4psp,A,A,1,open,1,,,
+43,J9UN47,25,609,4psp,B,B,1,open,1,,,
+44,J9UN47,25,609,4psr,A,A,1,open,1,,,
+45,J9UN47,25,609,4psr,B,B,1,open,1,,,
+46,J9UN47,25,609,4ni3,A,A,2,closed,1,,,
+47,J9UN47,25,609,4ni3,B,B,2,closed,1,,,
+48,O34926,1,405,3nc3,A,A,1,open,1,,,
+49,O34926,1,405,3nc5,A,A,1,open,1,,,
+50,O34926,1,405,3nc5,B,B,1,open,1,,,
+51,O34926,1,405,3nc3,B,B,2,closed,1,,,
+52,O34926,1,405,3nc6,A,A,2,closed,1,,,
+53,O34926,1,405,3nc6,B,B,2,closed,1,,,
+54,O34926,1,405,3nc7,A,A,2,closed,1,,,
+55,O34926,1,405,3nc7,B,B,2,closed,1,,,
+56,O76728,1,715,4bp8,A,A,1,open,1,,,Authors not sure if dimer is crystallisation artefact or biologically important.
+57,O76728,1,715,4bp8,B,B,1,open,1,,,Authors not sure if dimer is crystallisation artefact or biologically important.
+58,O76728,1,715,4bp9,A,A,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+59,O76728,1,715,4bp9,B,B,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+60,O76728,1,715,4bp9,C,C,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+61,O76728,1,715,4bp9,D,D,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+62,O76728,1,715,4bp9,E,E,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+63,O76728,1,715,4bp9,F,F,2,closed,1,,,Substrate = tetrapeptide. Authors not sure if dimer is crystallisation artefact or biologically important.
+64,P00558,1,417,2xe6,A,A,1,open,1,,,
+65,P00558,1,417,2xe7,A,A,1,open,1,,,
+66,P00558,1,417,2xe8,A,A,1,open,1,,,
+67,P00558,1,417,2wzd,A,A,2,closed,1,,,
+68,P00558,1,417,2ybe,A,A,2,closed,1,,,
+69,P00558,1,417,4axx,A,A,2,closed,1,,,
+70,P00918,1,260,3m1q,A,A,1,open,0,,,
+71,P00918,1,260,3m1w,A,A,2,closed,0,,,
+72,P0A4G2,1,309,4uto,A,A,1,open,1,,,
+73,P0A4G2,1,309,4uto,B,B,1,open,1,,,
+74,P0A4G2,1,309,4utp,A,A,2,closed,1,,,
+75,P0A4G2,1,309,4utp,B,B,2,closed,1,,,
+76,P0CG48,609,684,3ns8,A,A,1,open,1,,,
+77,P0CG48,609,684,3ns8,B,B,1,open,1,,,
+78,P0CG48,609,684,2n2k,A,A,2,closed,1,,,
+79,P0CG48,609,684,2n2k,B,B,2,closed,1,,,
+80,P14902,15,403,7p0n,A,A,1,open,1,,,
+81,P14902,15,403,7p0n,B,B,1,open,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+82,P14902,15,403,7p0n,C,C,1,open,1,,,
+83,P14902,15,403,7p0n,D,D,1,open,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+84,P14902,15,403,7p0r,A,A,2,intermediate,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+85,P14902,15,403,7p0r,B,B,2,intermediate,1,,,
+86,P14902,15,403,7p0r,C,C,2,intermediate,1,,,
+87,P14902,15,403,7p0r,D,D,2,intermediate,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+88,P14902,15,403,7nge,A,A,3,closed,1,,,
+89,P14902,15,403,7nge,B,B,3,closed,1,,,
+90,P14902,15,403,7nge,C,C,3,closed,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+91,P14902,15,403,7nge,D,D,3,closed,1,,,Unclear whether the dashed out cells are true conformations in their defined states. The unformatted cells are definitely in their conformation as stated by the authors.
+92,P15291,126,398,2fy7,A,A,1,open,1,,,
+93,P15291,126,398,2fya,A,A,1,open,1,,,
+94,P15291,126,398,2fyb,A,A,1,open,1,,,
+95,P15291,126,398,6fwu,A,A,1,open,1,,,Dimer
+96,P15291,126,398,6fwu,B,B,1,open,1,,,Dimer
+97,P15291,126,398,2fyc,B,B,2,closed,1,,,Complexed with lactalbumin
+98,P15291,126,398,2fyc,D,D,2,closed,1,,,Complexed with lactalbumin
+99,P15291,126,398,2fyd,B,B,2,closed,1,,,Complexed with lactalbumin
+100,P15291,126,398,2fyd,D,D,2,closed,1,,,Complexed with lactalbumin
+101,P18031,1,301,5k9v,A,A,1,open,1,,,
+102,P18031,1,301,5ka0,A,A,1,open,1,,,
+103,P18031,1,301,5ka2,A,A,1,open,1,,,
+104,P18031,1,301,5ka4,A,A,1,open,1,,,
+105,P18031,1,301,5ka8,A,A,1,open,1,,,
+106,P18031,1,301,5ka9,A,A,1,open,1,,,More different in open structure compared to rest with CONFORMER_ID=1
+107,P18031,1,301,5kaa,A,A,1,open,1,,,
+108,P18031,1,301,5kab,A,A,1,open,1,,,
+109,P18031,1,301,5kac,A,A,1,open,1,,,
+110,P18031,1,301,5k9w,A,A,2,closed,1,,,
+111,P18031,1,301,5ka1,A,A,2,closed,1,,,
+112,P18031,1,301,5ka3,A,A,2,closed,1,,,
+113,P18031,1,301,5ka7,A,A,2,closed,1,,,
+114,P18031,1,301,5kad,A,A,2,closed,1,,,
+115,P18031,1,301,5kad,B,B,2,closed,1,,,
+116,P18965,25,260,3s9b,A,A,1,open,1,,,
+117,P18965,25,260,3s9c,A,A,1,open,1,,,Bound to 14-residue coagulation factor
+118,P18965,25,260,3s9a,A,A,2,closed,1,,,
+119,P18965,25,260,3sbk,A,A,2,closed,1,,,"Author's specify variability is in the ""99-"" and ""174-loops"" and provide a figure showing the open and closed conformations, superposing the unknowns. The 99- and 174-loops more closely resemble the conoformation found in the closed conformation, despite it being unclear whether the authors would give the structure this conformational annotation. "
+120,P21589,27,549,7qga,A,A,1,open,1,,,Apo form appears to be the only classification for open conformation
+121,P21589,27,549,7qgl,A,A,1,open,1,,,Apo form appears to be the only classification for open conformation
+122,P21589,1,549,7qgm,A,A,1,open,1,,,Apo form appears to be the only classification for open conformation
+123,P21589,27,549,7qgo,A,A,1,open,1,,,Apo form appears to be the only classification for open conformation
+124,P21589,27,549,4h2i,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+125,P21589,27,549,6s7f,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+126,P21589,27,549,6s7h,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+127,P21589,27,549,6tvx,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+128,P21589,27,549,6tw0,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+129,P21589,27,549,6twa,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+130,P21589,27,549,6twf,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+131,P21589,27,549,6xue,A,A,2,closed,1,,,homo dimer in assymetric unit only.
+132,P21589,27,549,6xue,B,B,2,closed,1,,,homo dimer in assymetric unit only.
+133,P21589,27,549,6xug,A,A,2,closed,1,,,homo dimer in assymetric unit only.
+134,P21589,27,549,6xug,B,B,2,closed,1,,,homo dimer in assymetric unit only.
+135,P21589,27,549,6xuq,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+136,P21589,27,549,6ye1,A,A,2,closed,1,,,homo dimer in assymetric unit only.
+137,P21589,27,549,6ye1,B,B,2,closed,1,,,homo dimer in assymetric unit only.
+138,P21589,27,549,6ye2,A,A,2,closed,1,,,homo dimer in assymetric unit only.
+139,P21589,27,549,6ye2,B,B,2,closed,1,,,homo dimer in assymetric unit only.
+140,P21589,27,549,6z9b,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+141,P21589,27,549,6z9d,A,A,2,closed,1,,,"There apear to be only open and closed conformations for this UniProt accession although there is considerable variability between structures in the closed conformation. Where the authors from the two papers in which these structures were solved described there being a single open and single closed conformation, another set of authors may classify them into separate conformations. This highlights the bias towards clustering based on biological function, rather than energy minima in the conformational landscape. "
+142,P29350,243,528,4hjp,A,A,1,open,1,,,
+143,P29350,243,528,4hjq,A,A,2,closed,1,,,
+144,P29350,243,528,4hjq,B,B,2,closed,1,,,
+145,P31133,27,370,6yed,A,A,1,open,1,,,
+146,P31133,27,370,6yed,B,B,1,open,1,,,
+147,P31133,27,370,6ye0,A,B,2,closed,1,,,
+148,P31133,27,370,6ye0,B,A,2,closed,1,,,
+149,P31133,27,370,6ye6,A,A,2,closed,1,,,
+150,P31133,27,370,6ye6,B,B,2,closed,1,,,
+151,P31133,27,370,6ye7,A,A,2,closed,1,,,
+152,P31133,27,370,6ye7,B,B,2,closed,1,,,
+153,P31133,27,370,6ye8,A,A,2,closed,1,,,
+154,P31133,27,370,6ye8,B,B,2,closed,1,,,
+155,P31133,27,370,6yeb,A,A,2,closed,1,,,
+156,P31133,27,370,6yeb,B,B,2,closed,1,,,
+157,P31133,27,370,6yec,A,B,3,closed_unique,1,,,
+158,P31133,27,370,6yec,B,A,3,closed_unique,1,,,
+159,P33284,1,485,3o6w,A,A,1,open,1,,,
+160,P33284,1,485,3o6w,B,B,1,open,1,,,
+161,P33284,1,485,3o80,A,A,1,open,1,,,
+162,P33284,1,485,3o8m,A,A,2,closed,1,,,
+163,P40131,22,219,3tee,A,A,1,open,1,,,
+164,P40131,22,219,3vjp,A,A,2,closed,1,,,
+165,P40131,22,219,3vjp,B,B,2,closed,1,,,
+166,P40131,22,219,3vki,A,A,2,closed,1,,,
+167,P40131,22,219,3vki,B,B,2,closed,1,,,
+168,P40131,22,219,3vki,C,C,2,closed,1,,,
+169,P40131,22,219,3vki,D,D,2,closed,1,,,
+170,P48635,1,397,2wio,A,A,1,open,1,,,
+171,P48635,1,397,2jjn,A,A,2,closed,1,,,
+172,P48635,1,397,2jjo,A,A,3,closed_liganded,1,,,
+173,P61316,22,203,2zpd,A,A,1,open,1,,,
+174,P61316,22,203,2zpc,A,A,2,closed,1,,,
+175,P62495,276,437,2ktv,A,A,1,open,1,,,
+176,P62495,276,437,2ktu,A,A,2,closed,1,,,
+177,P71447,1,221,2wfa,A,A,1,open,1,,,
+178,P71447,1,221,2whe,A,A,1,open,1,,,
+179,P71447,1,221,5olw,A,A,1,open,1,,,
+180,P71447,1,221,5olw,B,B,1,open,1,,,
+181,P71447,1,221,6h8u,A,A,1,open,0,,,
+182,P71447,1,221,6h8v,A,A,1,open,0,,,
+183,P71447,1,221,6h8v,B,B,1,open,0,,,
+184,P71447,1,221,6h8w,A,A,1,open,0,,,
+185,P71447,1,221,6h8x,A,A,1,open,0,,,
+186,P71447,1,221,6h8x,B,B,1,open,0,,,
+187,P71447,1,221,6h8y,A,A,1,open,0,,,
+188,P71447,1,221,6h8z,A,A,1,open,0,4,open2,
+189,P71447,1,221,6h90,A,A,1,open,0,,,
+190,P71447,1,221,6h91,A,A,1,open,0,,,
+191,P71447,1,221,6h91,B,B,1,open,0,,,
+192,P71447,1,221,6h92,A,A,1,open,0,,,
+193,P71447,1,221,6h92,B,B,1,open,0,,,
+194,P71447,1,221,6h93,A,A,1,open,0,,,
+195,P71447,1,221,6h93,B,B,1,open2,0,,,
+196,P71447,1,221,6h94,A,A,1,open2,0,4,open2,
+197,P71447,1,221,6hdf,A,A,1,open,0,,,
+198,P71447,1,221,6hdf,B,B,1,open,0,,,
+199,P71447,1,221,6hdh,A,A,1,open,0,,,
+200,P71447,1,221,6hdh,B,B,1,open,0,,,
+201,P71447,1,221,6hdi,A,A,1,open,0,,,
+202,P71447,1,221,6hdi,B,B,1,open,0,,,
+203,P71447,1,221,2wf8,A,A,2,TS,1,,,
+204,P71447,1,221,2wf5,A,A,3,closed,1,,,
+205,P71447,1,221,2wf6,A,A,3,closed,1,,,
+206,P71447,1,221,2wf7,A,A,3,closed,1,,,
+207,P71447,1,221,2wf9,A,A,3,closed,1,,,
+208,P71447,1,221,5olx,A,A,3,closed,1,,,
+209,P71447,1,221,5oly,A,A,3,closed,1,,,homo dimer
+210,P71447,1,221,5oly,G,B,3,closed,1,,,homo dimer
+211,P71447,1,221,6hdg,A,A,3,closed,0,,,
+212,P71447,1,221,6hdj,A,A,3,closed,0,,,
+213,P71447,1,221,6hdk,A,A,3,closed,0,,,
+214,P71447,1,221,6hdl,A,A,3,closed,0,,,
+215,P71447,1,221,6hdm,A,A,3,closed,0,,,
+216,P76045,22,301,2iwv,A,A,1,open,1,,,
+217,P76045,22,301,2iwv,B,B,1,open,1,,,
+218,P76045,22,301,2iwv,C,C,1,open,1,,,
+219,P76045,22,301,2iwv,D,D,1,open,1,,,
+220,P76045,22,301,2iww,A,A,2,closed,1,,,
+221,P76045,22,301,2iww,B,B,2,closed,1,,,
+222,P9WNX1,3,161,4klx,A,A,1,open,1,,,
+223,P9WNX1,3,161,4klx,B,B,1,open,1,,,
+224,P9WNX1,3,161,4km2,A,A,1,open,1,,,
+225,P9WNX1,3,161,4km2,B,B,1,open,1,,,
+226,P9WNX1,3,161,6nni,A,A,2,closed,1,,,homo dimer
+227,P9WNX1,3,161,6nni,B,B,2,closed,1,,,homo dimer
+228,Q18A65,24,340,6hnj,A,A,1,open,1,,,
+229,Q18A65,24,340,6hnk,A,A,2,open2,1,,,
+230,Q18A65,24,340,6hni,A,A,3,closed,1,,,
+231,Q53W80,19,434,7c63,A,A,1,open,1,,,
+232,Q53W80,19,434,7c6x,A,A,1,open,1,,,
+233,Q53W80,19,434,7c6x,B,B,1,open,1,,,
+234,Q53W80,19,434,7c6x,C,C,1,open,1,,,
+235,Q53W80,19,434,7c6x,D,D,1,open,1,,,
+236,Q53W80,19,434,7c6x,E,E,1,open,1,,,
+237,Q53W80,19,434,7c6x,F,F,1,open,1,,,
+238,Q53W80,19,434,7c6x,G,G,1,open,1,,,
+239,Q53W80,19,434,7c6x,H,H,1,open,1,,,
+240,Q53W80,19,434,7c6x,I,I,1,open,1,,,
+241,Q53W80,19,434,7c6x,J,J,1,open,1,,,
+242,Q53W80,19,434,7c6x,K,K,1,open,1,,,
+243,Q53W80,19,434,7c6x,L,L,1,open,1,,,
+244,Q53W80,19,434,7c6y,A,A,1,open,1,,,
+245,Q53W80,19,434,7c6z,A,A,1,open,1,,,
+246,Q53W80,19,434,7c6z,B,B,1,open,1,,,
+247,Q53W80,19,434,7c64,A,A,2,open2,1,,,homo dimer
+248,Q53W80,19,434,7c64,B,B,2,open2,1,,,homo dimer
+249,Q53W80,19,434,7c6f,A,A,2,open2,1,,,
+250,Q53W80,19,434,7c6g,A,A,3,open_liganded,1,,,homo dimer
+251,Q53W80,19,434,7c6g,B,B,3,open_liganded,1,,,homo dimer
+252,Q53W80,19,434,7c6h,A,A,3,open_liganded,1,,,
+253,Q53W80,19,434,7c6h,B,B,3,open_liganded,1,,,
+254,Q53W80,19,434,7c6i,A,A,3,open_liganded,1,,,homo dimer
+255,Q53W80,19,434,7c6i,B,B,3,open_liganded,1,,,homo dimer
+256,Q53W80,19,434,7c70,A,A,3,open_liganded,1,,,
+257,Q53W80,19,434,7c70,B,B,3,open_liganded,1,,,
+258,Q53W80,19,434,7c66,A,A,4,closed,1,,,homo dimer
+259,Q53W80,19,434,7c66,B,B,4,closed,1,,,homo dimer
+260,Q53W80,19,434,7c67,A,A,4,closed,1,,,homo dimer
+261,Q53W80,19,434,7c67,B,B,4,closed,1,,,homo dimer
+262,Q53W80,19,434,7c68,A,A,4,closed,1,,,homo dimer
+263,Q53W80,19,434,7c68,B,B,4,closed,1,,,homo dimer
+264,Q53W80,19,434,7c69,A,A,4,closed,1,,,homo dimer
+265,Q53W80,19,434,7c69,B,B,4,closed,1,,,homo dimer
+266,Q53W80,19,434,7c6j,A,A,4,closed,1,,,
+267,Q53W80,19,434,7c6j,B,B,4,closed,1,,,
+268,Q53W80,19,434,7c6k,A,A,4,closed,1,,,
+269,Q53W80,19,434,7c6l,A,A,4,closed,1,,,
+270,Q53W80,19,434,7c6l,B,B,4,closed,1,,,
+271,Q53W80,19,434,7c6m,A,A,4,closed,1,,,
+272,Q53W80,19,434,7c6n,A,A,4,closed,1,,,
+273,Q53W80,19,434,7c6n,B,B,4,closed,1,,,
+274,Q53W80,19,434,7c6r,A,A,4,closed,1,,,
+275,Q53W80,19,434,7c6t,A,A,4,closed,1,,,
+276,Q53W80,19,434,7c6v,A,A,4,closed,1,,,
+277,Q53W80,19,434,7c6v,B,B,4,closed,1,,,
+278,Q53W80,19,434,7c6v,C,C,4,closed,1,,,
+279,Q53W80,19,434,7c6w,A,A,4,closed,1,,,
+280,Q5F9M1,16,274,3zsf,A,A,1,open,1,,,
+281,Q5F9M1,16,274,3zsf,B,B,1,open,1,,,
+282,Q5F9M1,16,274,3zsf,C,C,1,open,1,,,
+283,Q5F9M1,16,274,3zsf,D,D,1,open,1,,,
+284,Q5F9M1,16,274,3zsf,E,E,1,open,1,,,
+285,Q5F9M1,16,274,3zsf,F,F,1,open,1,,,
+286,Q5F9M1,16,274,3zsf,G,G,1,open,1,,,
+287,Q5F9M1,16,274,3zsf,H,H,1,open,1,,,
+288,Q5F9M1,16,274,2yln,A,A,2,closed,1,,,
+289,Q5JRX3,33,1037,6xos,A,A,1,open,0,,,
+290,Q5JRX3,33,1037,6xot,A,A,2,open2,0,,,
+291,Q5JRX3,33,1037,6xou,A,A,3,open3,0,,,
+292,Q5JRX3,33,1037,6xov,A,A,4,closed,0,,,B and C chains = substrate peptides
+293,Q5JRX3,33,1037,6xow,A,A,5,closed2,0,,,
+294,Q72GF3,8,372,4kbf,A,A,1,open,1,,,
+295,Q72GF3,8,372,4kbf,B,B,2,open2,1,,,
+296,Q72GF3,8,215,4kbg,A,A,3,open3,1,,,"Called ‘almost closed’ in entry title. Paper refers to state as another open state (closest to closed state, however)"
+297,Q72GF3,8,372,4kbg,B,B,3,open3,1,,,"Called ‘almost closed’ in entry title. Paper refers to state as another open state (closest to closed state, however)"
+298,Q72HW2,24,462,5afa,A,A,1,open,1,,,
+299,Q72HW2,24,462,6w2k,A,A,1,open,1,,,
+300,Q72HW2,24,462,6w2k,B,B,1,open,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+301,Q72HW2,24,462,6q29,A,A,2,open2,1,,,
+302,Q72HW2,24,462,6w9x,A,A,2,open2,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+303,Q72HW2,24,462,6wcg,A,A,2,open2,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+304,Q72HW2,24,462,6wch,A,A,2,open2,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+305,Q72HW2,24,462,6wcl,A,A,2,open2,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+306,Q72HW2,24,462,6wcm,A,A,2,open2,0,,,"Entries lacking literature conformation were solved by the same group that published the literature-confirmed structures. The authors propose there are three pH-dependent structures, with the conformational discrepancy occurring around the Gly276 loop. Conformations which lack literature confirmation were classified based on their closeness in structure to the appropriate loop. No intermediate loop conformations aside from the three reported were observed. "
+307,Q72HW2,24,462,6tyr,A,A,3,closed,1,,,
+308,Q7DAU8,320,573,3l6g,A,A,1,open,1,,,
+309,Q7DAU8,320,573,3l6h,A,A,2,closed,1,,,
+310,Q82GL5,1,400,7cl7,A,A,1,open,0,,,
+311,Q82GL5,1,400,7cl9,A,A,1,open,0,,,
+312,Q82GL5,1,400,7cl8,A,A,2,closed,0,,,
+313,Q8A5V9,1,244,3quq,A,A,1,open,1,,1,open
+314,Q8A5V9,1,244,3qut,A,A,1,open,1,,1,open
+315,Q8A5V9,1,244,3qu2,A,A,2,closed,1,,4,closed
+316,Q8A5V9,1,244,3qu2,B,B,2,closed,1,,4,closed
+317,Q8A5V9,1,244,3qu2,C,C,2,closed,1,,4,closed
+318,Q8A5V9,1,244,3qu2,D,D,2,closed,1,,4,closed
+319,Q8A5V9,1,244,3qu4,A,A,2,closed,1,,3,closed_partial
+320,Q8A5V9,1,244,3qu4,B,B,2,closed,1,,3,closed_partial
+321,Q8A5V9,1,244,3qu4,C,C,2,closed,1,,3,closed_partial
+322,Q8A5V9,1,244,3qu4,D,D,2,closed,1,,3,closed_partial
+323,Q8A5V9,1,244,3qu4,E,E,2,closed,1,,3,closed_partial
+324,Q8A5V9,1,244,3qu4,F,F,2,closed,1,,3,closed_partial
+325,Q8A5V9,1,244,3qu4,G,G,2,closed,1,,3,closed_partial
+326,Q8A5V9,1,244,3qu4,H,H,2,closed,1,,3,closed_partial
+327,Q8A5V9,1,244,3qu5,A,A,2,closed,1,,3,closed_partial
+328,Q8A5V9,1,244,3qu5,B,B,2,closed,1,,3,closed_partial
+329,Q8A5V9,1,244,3qu7,A,A,2,closed,1,,3,closed_partial
+330,Q8A5V9,1,244,3qu7,B,B,2,closed,1,,3,closed_partial
+331,Q8A5V9,1,244,3qu9,A,A,2,closed,1,,2,open_partial
+332,Q8A5V9,1,244,3qub,A,A,2,closed,1,,3,closed_partial
+333,Q8A5V9,1,244,3quc,A,A,2,closed,1,,3,closed_partial
+334,Q8A5V9,1,244,3qx7,A,A,2,closed,1,,4,closed
+335,Q8A5V9,1,244,3qxg,A,A,2,closed,1,,4,closed
+336,Q8A5V9,1,244,3qxg,B,B,2,closed,1,,4,closed
+337,Q8A5V9,1,244,3qyp,A,A,2,closed,1,,3,closed_partial
+338,Q8A5V9,1,244,3qyp,B,B,2,closed,1,,3,closed_partial
+339,Q8A5V9,1,244,3r9k,A,A,2,closed,1,,4,closed
+340,Q9ERE7,45,184,2rqm,A,A,1,open,1,,,
+341,Q9ERE7,45,184,2rqk,A,A,2,closed,1,,,
+342,Q9SS90,129,419,6k8b,A,A,1,open,0,,,
+343,Q9SS90,129,419,6k8b,B,B,1,open,0,,,
+344,Q9SS90,129,419,6k85,B,A,2,closed,0,,,
+345,Q9SS90,129,419,6k86,B,A,2,closed,0,,,
+346,Q9SS90,129,419,6k87,B,A,2,closed,0,,,
+347,Q9SS90,129,419,6k89,B,A,2,closed,0,,,
+348,Q9U6Y3,44,260,6qsm,A,A,1,open,1,,,
+349,Q9U6Y3,44,260,6qsl,A,A,2,closed,1,,,
+350,Q9U6Y3,44,260,6qso,A,A,2,closed,1,,,
+351,Q9UBV7,81,327,4irp,A,A,1,open,1,,,
+352,Q9UBV7,81,327,4irp,B,B,1,open,1,,,
+353,Q9UBV7,81,327,4irq,A,A,2,closed,1,,,
+354,Q9UBV7,81,327,4irq,B,B,2,closed,1,,,
+355,Q9UBV7,81,327,4irq,C,C,2,closed,1,,,
+356,Q9UBV7,81,327,4irq,D,D,2,closed,1,,,
+357,Q9X6R4,1,690,3iuj,A,A,1,open,1,,,
+358,Q9X6R4,1,690,3iul,A,A,1,open,1,,,
+359,Q9X6R4,1,690,3ium,A,A,1,open,1,,,
+360,Q9X6R4,1,690,3iun,A,A,1,open,1,,,
+361,Q9X6R4,1,690,3iuq,A,A,2,closed,1,,,
+362,Q9X6R4,1,690,3ivm,A,A,2,closed,1,,,
+363,Q9X6R4,1,690,3mun,A,A,2,closed,1,,,
+364,Q9X6R4,1,690,3muo,A,A,2,closed,1,,,
+365,Q9X9P9,1,389,2olo,A,A,1,open,1,,,
+366,Q9X9P9,1,389,3hzl,A,A,1,open,1,,,
+367,Q9X9P9,1,389,2oln,A,A,2,closed,1,,,
+368,Q9Z4N6,23,342,1si1,A,A,1,open,1,,,
+369,Q9Z4N6,23,342,1si0,A,A,2,closed,1,,,

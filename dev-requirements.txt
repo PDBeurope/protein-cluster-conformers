@@ -1,0 +1,5 @@
+# Unit tests
+pytest==7.1.3
+pytest-cov==3.0.0
+pytest-forked==1.4.0
+pytest-xdist==2.5.0
