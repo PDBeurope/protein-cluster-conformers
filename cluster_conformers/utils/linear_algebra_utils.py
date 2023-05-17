@@ -7,7 +7,7 @@ calculations performed in the package, with the scripts they call handling speci
 logic, such as deciding which chains to call these functions on.
 """
 
-from math import sqrt
+from math import dist
 
 from numpy import (
     absolute,
@@ -37,13 +37,7 @@ def euclidean(
     :return: Euclidean distance between two Cartesian coordinates
     :rtype: float
     """
-    distance = 0
-    for (
-        a,
-        b,
-    ) in zip(coords_3D_1, coords_3D_2):
-        distance += (a - b) ** 2
-    return sqrt(distance)
+    return dist(coords_3D_1, coords_3D_2)
 
 
 def generate_ca_matx(x: "list[float]", y: "list[float]", z: "list[float]") -> ndarray:
