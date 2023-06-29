@@ -23,4 +23,6 @@ jobs:
           pip install -e ".[tests]"
           pip install pre-commit
           pre-commit install && pre-commit run --all
-      - run: pytest --cov=cluster_conformers
+      - run: |
+          pip install pytest
+          pytest --cov=cluster_conformers
