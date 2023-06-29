@@ -697,7 +697,7 @@ def render_dendrogram(
         pdbe_chain_ids = io_utils.serial_load(  # TODO: Turn str into global var
             path_results.joinpath(f"{unp}_linkage_matx_label_list.pickle")
         )
-        
+
     except OSError:
         logger.error(
             "Linkage matrix and/or label list not found. Please run clustering first."

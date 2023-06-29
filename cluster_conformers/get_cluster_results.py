@@ -1,7 +1,6 @@
 from pathlib import Path
 import sys
 import pandas as pd
-import requests
 import logging
 
 from utils.download_utils import download_cluster_results

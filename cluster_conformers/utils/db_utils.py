@@ -1,4 +1,3 @@
-
 import os
 import sys
 
@@ -6,7 +5,6 @@ import oracledb
 import pandas as pd
 import sqlalchemy
 from dotenv import find_dotenv, load_dotenv
-
 
 
 def get_label_asym_ids(pdb_id, auth_asym_id):
@@ -24,9 +22,6 @@ def get_label_asym_ids(pdb_id, auth_asym_id):
     data = connection.execute(query, (pdb_id, auth_asym_id))
 
     return str(list(data)[0][0])
-
-
-
 
 
 def initialise_oracle_database():
@@ -52,9 +47,6 @@ def initialise_oracle_database():
     oracle_engine = sqlalchemy.create_engine(engine_path)
 
     return oracle_engine
-
-
-
 
 
 if __name__ == "__main__":
