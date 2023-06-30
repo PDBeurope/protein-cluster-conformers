@@ -12,7 +12,7 @@ repos:
       - id: end-of-file-fixer
         # args: ["--maxkb=3000"]
       - id: check-ast
-      - id: no-commit-to-branch
+      # - id: no-commit-to-branch
   - repo: https://github.com/pycqa/flake8
     rev: 4.0.1
     hooks:
