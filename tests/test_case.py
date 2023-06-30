@@ -31,7 +31,7 @@ class TestCaseModified(TestCase):
             raise FileExistsError(f"File does exist: {str(path)}")
 
 
-def remove_files(path):
+def remove_files_in_dir(path):
     """
     Utils function used at the start of test methods to remove files saved from previous
     tests.

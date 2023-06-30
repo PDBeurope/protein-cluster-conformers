@@ -15,28 +15,9 @@ import pandas as pd
 from cluster_conformers import cluster_monomers
 
 # Import modified TestCase class
-from .test_case import TestCaseModified, remove_files
-
-# import sys
-# import unittest
-# from unittest import mock
-
-
-# # Modify Python path for custom imports
-# sys.path[0] = str(  # Override default Python import part
-#     pathlib.Path(
-#         os.path.realpath(__file__)  # Path to this file
-#     ).parent.parent  # Path to folder this file is in
-# )
-
+from .test_case import TestCaseModified, remove_files_in_dir
 
 # Global variables
-
-# Initialise base path as string
-# PATH_HOME = pathlib.Path.home()
-# PATH_BASE = PATH_HOME.joinpath(
-#     "EMBL-EBI", "funclan_work", "contact_map_difference", "tests"
-# )
 PATH_BASE = pathlib.Path("./tests")
 PATH_SERIALISED_MATXS = PATH_BASE.joinpath("mock_serial_matxs")
 PATH_SERIALISED_10_10_MATXS = PATH_SERIALISED_MATXS.joinpath("10_by_10_full")
@@ -50,32 +31,10 @@ PATH_SAVE_DD_MAPS = PATH_SAVE_OUTPUT.joinpath("distance_difference_maps")
 
 PATH_TRUNCATED_MOCK_MMCIFS = PATH_BASE.joinpath("mock_data/mock_mmcifs/")
 
-
 # Mock objects
 LOADED_MMCIF_OBJ_TYPE = gemmi.cif.Block
 CHAINS = ["A", "B"]
 TEST_UNP = "A12345"
-# EXPECTED_OBJ = mock.Mock(
-#     name="Mock ClusterConformers() object",
-#     **{
-#         "unp": TEST_UNP,
-#         "mmcifs": {
-#             "3nc3": LOADED_MMCIF_OBJ_TYPE,
-#             "3nc5": LOADED_MMCIF_OBJ_TYPE,
-#             "3nc6": LOADED_MMCIF_OBJ_TYPE,
-#             "3nc7": LOADED_MMCIF_OBJ_TYPE,
-#         },
-#         "mmcif_paths": {
-#             "3nc3": f"{PATH_TRUNCATED_MOCK_MMCIFS}3nc3_updated.cif",
-#             "3nc5": f"{PATH_TRUNCATED_MOCK_MMCIFS}3nc5_updated.cif",
-#             "3nc6": f"{PATH_TRUNCATED_MOCK_MMCIFS}3nc6_updated.cif",
-#             "3nc7": f"{PATH_TRUNCATED_MOCK_MMCIFS}3nc7_updated.cif",
-#         },
-#         "chains": {"3nc3": CHAINS, "3nc5": CHAINS, "3nc6": CHAINS, "3nc7": CHAINS},
-#         "chains_all": np.array(["A", "B", "A", "B", "A", "B", "A", "B"]),
-#         "pdbe_ids": ["3nc3", "3nc5", "3nc6", "3nc7"],
-#     },
-# )
 
 # Test input
 TEST_MMCIFS_AND_CHAINS_DICT = {
@@ -98,6 +57,15 @@ class TestClusterMonomersClassicalForce(TestCaseModified):
         self.test_cluster_conformers_obj = cluster_monomers.ClusterConformations(
             unp=TEST_UNP, mmcifs_and_chains=TEST_MMCIFS_AND_CHAINS_DICT, force=True
         )
+
+        # Create folders if not already present
+        for path in (
+            PATH_SAVE_CA,
+            PATH_SAVE_CLUSTER_RESULTS,
+            PATH_SAVE_DD_MATXS,
+            PATH_SAVE_DD_MAPS,
+        ):
+            path.mkdir(parents=True, exist_ok=True)
 
     def tearDown(self):
         """
@@ -122,7 +90,7 @@ class TestClusterMonomersClassicalForce(TestCaseModified):
         """
 
         # Remove saved files from previous tests
-        remove_files(PATH_SAVE_CLUSTER_RESULTS)
+        remove_files_in_dir(PATH_SAVE_CLUSTER_RESULTS)
 
         self.test_cluster_conformers_obj.ca_distance(
             path_save=PATH_SAVE_CA,
@@ -202,7 +170,7 @@ class TestClusterMonomersClassicalForce(TestCaseModified):
         """
 
         # Remove saved files from previous tests
-        remove_files(PATH_SAVE_CLUSTER_RESULTS)
+        remove_files_in_dir(PATH_SAVE_CLUSTER_RESULTS)
 
         # Only method truly being tested here -- the rest were checked in the previous
         # test by running them is still important to ensure the correct results are
@@ -292,7 +260,10 @@ class TestFigureRendering(TestCaseModified):
         instance is used by all functions, which are subsequently patched where
         function calls are tested elsewhere.
         """
-        pass
+
+        self.path_save = PATH_SAVE_OUTPUT.joinpath("figures")
+        # Create folder if not already present
+        self.path_save.mkdir(parents=True, exist_ok=True)
 
     def tearDown(self) -> None:
         return super().tearDown()
@@ -311,7 +282,7 @@ class TestFigureRendering(TestCaseModified):
         cluster_monomers.render_dendrogram(
             unp=test_unp,
             path_results=PATH_BASE.joinpath("test_inputs"),
-            path_save=PATH_SAVE_OUTPUT.joinpath("figures"),
+            path_save=self.path_save,
             png=True,
             svg=True,
         )

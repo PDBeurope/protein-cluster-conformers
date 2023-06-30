@@ -18,7 +18,7 @@ from pathlib import PosixPath
 
 # Standard package imports
 import seaborn as sns
-from matplotlib import cm
+from matplotlib import colormaps
 from matplotlib import pyplot as plt
 from numpy import ndarray, where
 import logging
@@ -83,7 +83,7 @@ def make_heatmap_kwargs():
     histogram). Used several times throughout scripts so changes here will propagate.
     """
 
-    dist_diff_cmap = cm.get_cmap("viridis").copy()
+    dist_diff_cmap = colormaps["viridis"].copy()
     dist_diff_cmap.set_bad("grey", alpha=0.5)
 
     heatmap_kwargs = {
