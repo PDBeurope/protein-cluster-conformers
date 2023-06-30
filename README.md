@@ -10,11 +10,11 @@ For intructions on importing `protein-cluster-conformers` into your own Python c
 
 **Dependencies**:
 
-`protein-cluster-conformers` requires >=Python3.9 to run. Initialise virtual environment and install dependencies with:
+`protein-cluster-conformers` requires >=Python3.10 to run. Initialise virtual environment and install dependencies with:
 
 ```shell
 $ cd contact_map_difference
-$ python3.9 -m venv cluster_venv
+$ python3.10 -m venv cluster_venv
 $ source cluster_venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
