@@ -111,6 +111,7 @@ ENV/
 env.bak/
 venv.bak/
 env_310/
+pyenv3.10/
 
 # Spyder project settings
 .spyderproject
@@ -191,12 +192,6 @@ tests/test_output/figures/*
 !tests/test_output/cluster_results/.gitkeep
 !tests/test_output/renaming/.gitkeep
 !tests/test_output/figures/.gitkeep
-
-# Remove when in production
-# .gitlab-ci.yml
-
-# Deprecated projects
-# test/deprecated/*
 
 
 TODO

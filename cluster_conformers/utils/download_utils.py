@@ -113,9 +113,9 @@ def download_alphafold_mmcif(uniprot: str, path_save: PosixPath) -> PosixPath:
 
 def download_cluster_results(uniprot: "str", save_dir: "PosixPath") -> None:
     """
-    Function to download cluster results from the PDBe's GraphAPI. 
+    Function to download cluster results from the PDBe's GraphAPI.
 
-    :param uniprot: 
+    :param uniprot:
     :type uniprot: str
     :param save_dir: _description_
     :type save_dir: str|PosixPath
@@ -123,7 +123,7 @@ def download_cluster_results(uniprot: "str", save_dir: "PosixPath") -> None:
     :rtype: _type_
     """
 
-    base_api_uri = f"https://www.ebi.ac.uk/pdbe/graph-api/uniprot/superposition/"
+    base_api_uri = "https://www.ebi.ac.uk/pdbe/graph-api/uniprot/superposition/"
     query = f"{base_api_uri}{uniprot}"
 
     logger.debug(f"Querying Graph API with UniProt={query}")

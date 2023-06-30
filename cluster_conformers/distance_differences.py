@@ -14,11 +14,11 @@ Generates distance difference maps as 2D histograms to visualise the residue-res
 differences between protein structures, within and between conformational states.
 """
 
-from pathlib import PosixPath, Path
+from pathlib import PosixPath
 
 # Standard package imports
 import seaborn as sns
-from matplotlib import cm
+from matplotlib import colormaps
 from matplotlib import pyplot as plt
 from numpy import ndarray, where
 import logging
@@ -83,7 +83,7 @@ def make_heatmap_kwargs():
     histogram). Used several times throughout scripts so changes here will propagate.
     """
 
-    dist_diff_cmap = cm.get_cmap("viridis").copy()
+    dist_diff_cmap = colormaps["viridis"].copy()
     dist_diff_cmap.set_bad("grey", alpha=0.5)
 
     heatmap_kwargs = {
@@ -162,9 +162,8 @@ def format_2d_hist(axes, title):
 
 
 def find_largest_distance_from_matxs(
-        path_matxs: PosixPath, 
-        dd_matxs_fnames: "list[str]"
-    ) -> float:
+    path_matxs: PosixPath, dd_matxs_fnames: "list[str]"
+) -> float:
     """
     Finds the largest distance in all distance difference matrices. Used to set the
     maximum value for the colour bar in the distance difference maps.
@@ -176,21 +175,17 @@ def find_largest_distance_from_matxs(
         path_dd_matx = path_matxs.joinpath(i)
         dd_matx = io_utils.load_matrix_from_tri_upper(path_dd_matx)
 
-        # Update max distance if larger than current max
-        max_distance = linear_algebra_utils.find_max(
-            dd_matx, 
-            starting_max=max_distance
-        )
+        # Update max distance if larger than current max
+        max_distance = linear_algebra_utils.find_max(dd_matx, starting_max=max_distance)
 
     return max_distance
 
 
-
 def make_dd_maps(
-        path_matxs: PosixPath, 
-        path_save_maps: PosixPath, 
-        force: bool = False,
-    ) -> None:
+    path_matxs: PosixPath,
+    path_save_maps: PosixPath,
+    force: bool = False,
+) -> None:
     """
     Plot all unique distance difference matrices as 2D histograms (heatmaps). Must
     have the distance difference matrices using the cluster() method on a
@@ -203,10 +198,10 @@ def make_dd_maps(
     # Load in the distance difference matrices to find the maximum distance
     dd_matxs_fnames = io_utils.get_fnames(path_matxs)
 
-    # Find the maximum distance in all distance difference matrices
+    # Find the maximum distance in all distance difference matrices
     logger.info("Finding maximum distance")
     max_distance = find_largest_distance_from_matxs(path_matxs, dd_matxs_fnames)
-    logger.info(f"Maximum distance: {max_distance}")    
+    logger.info(f"Maximum distance: {max_distance}")
 
     # Assign max distance to heatmap kwargs
     heatmap_kwargs = make_heatmap_kwargs()
@@ -214,16 +209,14 @@ def make_dd_maps(
 
     # Make directory to save maps
     path_save_maps.mkdir(parents=True, exist_ok=True)
-    
+
     # Plot distance difference maps
     logger.info("Rendering distance difference maps...")
     for dd_matx_fname in dd_matxs_fnames:
 
         # Only render if not already rendered or force=True
         if not (
-            path_save_maps.joinpath(f"{dd_matx_fname[:-4]}.png").exists()
-            and
-            not force
+            path_save_maps.joinpath(f"{dd_matx_fname[:-4]}.png").exists() and not force
         ):
 
             # Initialise plot area
@@ -237,20 +230,15 @@ def make_dd_maps(
 
             # Plot heatmap
             plot_2d_hist(
-                io_utils.load_matrix_from_tri_upper(
-                    path_matxs.joinpath(dd_matx_fname)
-                ), 
+                io_utils.load_matrix_from_tri_upper(path_matxs.joinpath(dd_matx_fname)),
                 axes,
-                heatmap_kwargs
+                heatmap_kwargs,
             )
             logger.debug(f"Rendered {dd_matx_fname}")
 
             # Format plot
             add_colour_bar(fig, axes)
-            format_2d_hist(
-                axes, 
-                " ".join(dd_matx_fname.split("_"))[:-4]
-            )
+            format_2d_hist(axes, " ".join(dd_matx_fname.split("_"))[:-4])
             logger.debug(f"Formatted {dd_matx_fname}")
 
             # Save plot
@@ -258,7 +246,7 @@ def make_dd_maps(
                 path_save_maps,
                 save_fname=f"{dd_matx_fname[:-4]}",
                 png=True,
-                svg=False,      # Can be very expensive 
+                svg=False,  # Can be very expensive
             )
             logger.debug(f"Saved {dd_matx_fname}")
 
@@ -268,6 +256,5 @@ def make_dd_maps(
         else:
             # Already rendered
             logger.debug(f"Skipping {dd_matx_fname}")
-            
 
     logger.info("Rendering done.")

@@ -15,7 +15,7 @@ from gemmi import cif
 from matplotlib import pyplot as plt
 from numpy import around, float32
 from numpy import load as np_load
-from numpy import ndarray, savez_compressed, triu, fill_diagonal, diag
+from numpy import ndarray, savez_compressed, triu
 
 # Load logger
 logger = getLogger(__name__)
@@ -237,7 +237,7 @@ def load_matrix_from_tri_upper(path: "PosixPath|str") -> ndarray:
     matx_upper_tri = load_matrix(path=path)
 
     # square_symmetric_matx = fill_diagonal(
-    #     matx_upper_tri.T + matx_upper_tri, 
+    #     matx_upper_tri.T + matx_upper_tri,
     #     diag(matx_upper_tri)
     # )
 

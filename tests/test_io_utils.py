@@ -14,7 +14,7 @@ from matplotlib import pyplot as plt
 from cluster_conformers.utils import io_utils
 
 # Import modified TestCase class
-from .test_case import TestCaseModified, remove_files
+from .test_case import TestCaseModified, remove_files_in_dir
 
 # # Modify Python path for custom imports
 # sys.path[0] = str(  # Override default Python import part
@@ -89,7 +89,7 @@ class TestIOUtils(TestCaseModified):
         compressed .npz file.
         """
         # Remove output from previous test
-        remove_files(PATH_TEST_SAVE)
+        remove_files_in_dir(PATH_TEST_SAVE)
 
         # Location to save data produced in test
         path_save = PATH_TEST_SAVE.joinpath("test_matrix_numeric")
@@ -106,7 +106,7 @@ class TestIOUtils(TestCaseModified):
         compressed .npz file.
         """
         # Remove output from previous test
-        remove_files(PATH_TEST_SAVE)
+        remove_files_in_dir(PATH_TEST_SAVE)
 
         # Location to save data produced in test
         path_save = PATH_TEST_SAVE.joinpath("test_matrix_text")
@@ -196,7 +196,7 @@ class TestIOUtils(TestCaseModified):
         Checks if the save_figure() function correctly saves a figure.
         """
         # Remove output test files from previous tests, before running this test
-        remove_files(PATH_TEST_SAVE)
+        remove_files_in_dir(PATH_TEST_SAVE)
 
         # Check general plt.scatter case
         # Data -- actual values are not important

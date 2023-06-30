@@ -1,0 +1,28 @@
+# This workflow will install Python dependencies, run pytests
+
+name: protein-cluster-conformers tests
+
+on: push
+
+jobs:
+  pytest:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - run: |
+          pip install -e ".[tests]"
+          pip install pre-commit
+          pre-commit install && pre-commit run --all
+      - run: |
+          pip install pytest pytest-cov
+          pytest --cov=cluster_conformers
