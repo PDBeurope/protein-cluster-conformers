@@ -5,7 +5,7 @@ name: protein-cluster-conformers documentation
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   documentation:
