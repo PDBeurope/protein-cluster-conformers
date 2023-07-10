@@ -13,10 +13,10 @@ from matplotlib import use as mpl_use
 from pandas import DataFrame
 
 # Custom imports -- peptide_analysis
-from cluster_conformers import cluster_chains, distance_differences
+from . import cluster_chains, distance_differences
 
 # Custom imports -- utils
-from cluster_conformers.utils import (
+from .utils import (
     appearance_utils,
     download_utils,
     io_utils,
@@ -445,10 +445,10 @@ class ClusterConformations:
         """
         Clusters the chains parsed by sum-based score. Clustering results are stored to
         the object instance under the following accessible attributes:
-         - self.cluster_df : pandas.DataFrame of per-chain clustering results in tabular
-            format
-         - self.cluster_dict : dictionary of per-chain clustering results, predominently
-            used by class in `protein-superpose`
+        - self.cluster_df : pandas.DataFrame of per-chain clustering results in tabular
+        format
+        - self.cluster_dict : dictionary of per-chain clustering results, predominently
+        used by class in `protein-superpose`
 
         Also writes distance difference matrices and clustering results if paths parsed
         as arguments.
