@@ -27,7 +27,10 @@ jobs:
     - name: Run pre-commit
       run: pre-commit run --all
     - name: Run Tests
-      run: pytest --cov=${{ env.PACKAGE_NAME }}
+      run: |
+        coverage run -m pytest --junitxml=report.xml
+        coverage xml -o coverage/cobertura-coverage.xml
+        coverage report -m
     - name: Upload coverage to Codecov
       if: github.ref == 'refs/heads/main'
       uses: codecov/codecov-action@v1
