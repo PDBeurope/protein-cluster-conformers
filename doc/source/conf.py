@@ -8,9 +8,9 @@
 
 import cluster_conformers
 
-project = 'protein-cluster-conformers'
-copyright = '2023, Protein Data Bank in Europe'
-author = 'Protein Data Bank in Europe'
+project = "protein-cluster-conformers"
+copyright = "2023, Protein Data Bank in Europe"
+author = "Protein Data Bank in Europe"
 version = cluster_conformers.__version__
 release = cluster_conformers.__version__
 
