@@ -3,8 +3,8 @@ import sys
 import pandas as pd
 import logging
 
-from utils.download_utils import download_cluster_results
-from utils.logging_utils import init_logger
+from .utils.download_utils import download_cluster_results
+from .utils.logging_utils import init_logger
 
 logger = logging.getLogger(__name__)
 
