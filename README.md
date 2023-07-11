@@ -27,7 +27,7 @@ To cluster a set of protein structures, run the `find_clusters.py` script:
 
 ```shell
 $ python find_conformers.py [-h] [-v] -u UNIPROT -m MMCIF [MMCIF ...]
-														[-s PATH_CLUSTERS] -c PATH_CA [-d PATH_DD]
+							[-s PATH_CLUSTERS] -c PATH_CA [-d PATH_DD]
                           	[-g PATH_DENDROGRAM [PATH_DENDROGRAM ...]]
                           	[-w PATH_SWARM [PATH_SWARM ...]] [-o PATH_HISTOGRAM]
                           	[-a PATH_ALPHA_FOLD]
@@ -80,7 +80,7 @@ $ python find_clusters.py -u "A12345" \
 
 The paths to each structure are parsed using the `-m` flag.
 
-Chain IDs (only `auth_asym_id` is currently recognised) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
+Chain IDs (only `struct_asym_id` is currently recognised) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
 
 **Example**: O34926
 

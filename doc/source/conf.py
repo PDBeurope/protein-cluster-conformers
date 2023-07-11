@@ -70,7 +70,7 @@ html_theme_options = {
     "display_version": True,
     "prev_next_buttons_location": "bottom",
 }
-html_logo = "_static/img/logo.png"
+html_logo = "_static/logo.png"
 pygments_style = "sphinx"
 
 # region Extension configuration

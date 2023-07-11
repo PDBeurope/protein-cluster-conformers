@@ -4,12 +4,12 @@
    contain the root `toctree` directive.
 
 ##############################
- Protein Cluster Conformers
+Protein Cluster Conformers
 ##############################
 
 
-Welcome to protein-cluster-conformers's documentation
-======================================================
+Welcome to `protein-cluster-conformers`'s documentation
+========================================================
 
 .. toctree::
    :maxdepth: 2
@@ -22,20 +22,19 @@ Guides and tutorials
 .. toctree::
    :maxdepth: 1
 
-   guide/installation
+   guide/getting_started
    guide/user_guide
    guide/developer
-   guide/dependencies
+
 
 API documentation
 =================
 
 Comprehensive API documentation with information on every function,
-class and method. This is automatically generated from the orc source
-code and comments.
+class and method. Automatically generated from source code.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    api/index
 

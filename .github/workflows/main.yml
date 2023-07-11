@@ -68,6 +68,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+        pip install -r dev-requirements.txt
         pip install -e ".[docs]"
     - name: Build documentation
       run: |
