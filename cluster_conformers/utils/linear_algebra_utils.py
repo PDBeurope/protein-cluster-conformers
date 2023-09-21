@@ -20,6 +20,9 @@ from numpy import (
     sum,
     triu_indices,
 )
+import numpy as np
+
+# import scipy.spatial.distance as ssd
 
 
 def euclidean(
@@ -56,30 +59,38 @@ def generate_ca_matx(x: "list[float]", y: "list[float]", z: "list[float]") -> nd
     :return: List of Euclidean distances
     :rtype: list[float]
     """
+    r = np.array((x, y, z))
 
-    # Populated and returned
-    ca_dist_matx = []
+    # ssd.euclidean(r, r)
+    # print(ssd.pdist(r.T, 'euclidean'))
+    # return ssd.pdist(r.T, 'euclidean')
 
-    # Row loop
-    for x_a, y_a, z_a in zip(x, y, z):
-        distance_row = []
-        res1_coords = (x_a, y_a, z_a)
+    return np.sqrt(np.sum((r.reshape(3, 1, -1) - r.reshape(3, -1, 1)) ** 2, axis=0))
 
-        # Column loop
-        for x_b, y_b, z_b in zip(x, y, z):
-            res2_coords = (x_b, y_b, z_b)
+    # # Populated and returned
+    # ca_dist_matx = []
 
-            # Euclidian distance
-            dist = euclidean(res1_coords, res2_coords)
+    # # Row loop
+    # for x_a, y_a, z_a in zip(x, y, z):
+    #     distance_row = []
+    #     res1_coords = (x_a, y_a, z_a)
 
-            # Add element to row
-            distance_row.append(dist)
+    #     # Column loop
+    #     for x_b, y_b, z_b in zip(x, y, z):
+    #         res2_coords = (x_b, y_b, z_b)
 
-        # Add row to matrix
-        ca_dist_matx.append(distance_row)
+    #         # Euclidian distance
+    #         dist = euclidean(res1_coords, res2_coords)
 
-    # For faster linear algebra later
-    return asarray(ca_dist_matx)
+    #         # Add element to row
+    #         distance_row.append(dist)
+
+    #     # Add row to matrix
+    #     ca_dist_matx.append(distance_row)
+
+    # # For faster linear algebra later
+
+    # return asarray(ca_dist_matx)
 
 
 def matx_subtract(matx1: ndarray, matx2: ndarray) -> ndarray:
