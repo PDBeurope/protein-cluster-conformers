@@ -124,24 +124,55 @@ def plot_dendrogram(
 
     # Plot the corresponding dendrogram
     dn = dendrogram(linkage_matrix, ax=axis, **kwargs)
-    del dn
+
+    hline_props = {
+        "colors": ["black"],
+        "linestyles": ["dashed"],
+        "linewidths": 1,
+        "alpha": 0.5,
+    }
+    
 
     # Add horizontal line where cutoff is placed
     if cutoff:
-        max_parent = max(linkage_matrix[:, 2])
+        max_parent = linkage_matrix[:, 2].max()
         axis_xlimits = axis.get_xlim()
         axis.hlines(
             y=max_parent * cutoff,
             xmin=axis_xlimits[0],
             xmax=axis_xlimits[1],
-            colors=["black"],
-            linestyles=["dashed"],
-            linewidths=1,
-            alpha=0.5,
+            **hline_props
         )
 
     axis.set_title(f"Agglomerative clustering dendrogram: {unp}", fontweight="bold")
     axis.set_ylabel("Score (\u212B)")
+
+    # Set the y-axis limits
+    rock_bottom = -max_parent*0.025
+    axis.set_ylim(
+        rock_bottom, 
+        max_parent*1.05
+    )
+    
+    # Add vlines for each leaf below the x-axis
+    axis.vlines(
+        x=axis.get_xticks(),
+        ymin=rock_bottom,
+        ymax=0,
+        colors=dn["leaves_color_list"],
+        linestyles=["solid"],
+        linewidths=1,
+        # alpha=0.5,
+    )
+
+    axis.hlines(
+        y=0,
+        xmin=axis_xlimits[0],
+        xmax=axis_xlimits[1],
+        **hline_props
+    )
+    
+    del dn
 
 
 def plot_swarmplot(y_data: Iterable, unp: str) -> "tuple(Figure, Axes)":

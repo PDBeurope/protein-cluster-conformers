@@ -11,5 +11,5 @@ def init_plot_appearance():
     """
 
     # Figure parameters and formatting
-    plt.style.use("seaborn-v0_8-colorblind")
+    # plt.style.use("seaborn-v0_8-colorblind")
     plt.style.use("fast")
