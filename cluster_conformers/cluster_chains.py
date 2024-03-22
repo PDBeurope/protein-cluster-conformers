@@ -131,7 +131,6 @@ def plot_dendrogram(
         "linewidths": 1,
         "alpha": 0.5,
     }
-    
 
     # Add horizontal line where cutoff is placed
     if cutoff:
@@ -141,20 +140,17 @@ def plot_dendrogram(
             y=max_parent * cutoff,
             xmin=axis_xlimits[0],
             xmax=axis_xlimits[1],
-            **hline_props
+            **hline_props,
         )
 
     axis.set_title(f"Agglomerative clustering dendrogram: {unp}", fontweight="bold")
     axis.set_ylabel("Score (\u212B)")
 
-    # Set the y-axis limits
-    rock_bottom = -max_parent*0.025
-    axis.set_ylim(
-        rock_bottom, 
-        max_parent*1.05
-    )
-    
-    # Add vlines for each leaf below the x-axis
+    # Set the y-axis limits
+    rock_bottom = -max_parent * 0.025
+    axis.set_ylim(rock_bottom, max_parent * 1.05)
+
+    # Add vlines for each leaf below the x-axis
     axis.vlines(
         x=axis.get_xticks(),
         ymin=rock_bottom,
@@ -165,13 +161,8 @@ def plot_dendrogram(
         # alpha=0.5,
     )
 
-    axis.hlines(
-        y=0,
-        xmin=axis_xlimits[0],
-        xmax=axis_xlimits[1],
-        **hline_props
-    )
-    
+    axis.hlines(y=0, xmin=axis_xlimits[0], xmax=axis_xlimits[1], **hline_props)
+
     del dn
 
 
