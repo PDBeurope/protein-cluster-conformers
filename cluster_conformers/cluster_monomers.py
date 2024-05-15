@@ -672,6 +672,7 @@ def render_dendrogram(
     path_save: PosixPath = None,
     png: bool = False,
     svg: bool = False,
+    unp_range: "tuple[int, int]" = None,
 ) -> None:
     """
     Plot hierachical dendrogram from clustering results. Must have a linkage matrix and
@@ -684,6 +685,7 @@ def render_dendrogram(
     :type png: bool, optional
     :param svg: Save dendrogram image in SVG format, defaults to False
     :type svg: bool, optional
+    :param unp_range: Range of UniProt residues used for clustering
     """
 
     # Set matplotlib global formatting
@@ -718,14 +720,24 @@ def render_dendrogram(
             leaf_rotation=90,
         )  # p=3
 
+        # UniProt residue range specified, make modifications (optional)
+        if unp_range:
+            ax.set_title(
+                f"Agglomerative clustering results: {unp} ({unp_range[0]}-{unp_range[1]})",
+                fontweight="bold",
+            )
+            fname = f"{unp}_{unp_range[0]}_{unp_range[1]}_agglomerative_dendrogram"
+        else:
+            fname = f"{unp}_aggloomerative_dendrogram"
+
+        # Save file
         io_utils.save_figure(
             path_save,
-            save_fname=f"{unp}_agglomerative_dendrogram",
+            save_fname=fname,
             png=png,
             svg=svg,
         )
 
-        # plt.clf()
         plt.close(fig=fig)
 
     else:

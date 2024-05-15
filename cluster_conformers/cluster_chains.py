@@ -105,7 +105,8 @@ def plot_dendrogram(
     unp: str, axis, linkage_matrix: ndarray = None, cutoff: float = None, **kwargs
 ) -> "tuple(Figure, Axes)":
     """
-    Create linkage matrix from SKLearn model and plot the dendrogram of nodes.
+    Create linkage matrix from SKLearn model and plot the dendrogram of nodes. Applies
+    this to parsed Matplotlib axis, inplace.
 
     :param unp: UniProt accession
     :type unp: str
@@ -123,7 +124,7 @@ def plot_dendrogram(
     """
 
     # Plot the corresponding dendrogram
-    dn = dendrogram(linkage_matrix, ax=axis, **kwargs)
+    dendrogram_plot = dendrogram(linkage_matrix, ax=axis, **kwargs)
 
     hline_props = {
         "colors": ["black"],
@@ -143,7 +144,7 @@ def plot_dendrogram(
             **hline_props,
         )
 
-    axis.set_title(f"Agglomerative clustering dendrogram: {unp}", fontweight="bold")
+    axis.set_title(f"Agglomerative clustering results: {unp}", fontweight="bold")
     axis.set_ylabel("Score (\u212B)")
 
     # Set the y-axis limits
@@ -155,7 +156,7 @@ def plot_dendrogram(
         x=axis.get_xticks(),
         ymin=rock_bottom,
         ymax=0,
-        colors=dn["leaves_color_list"],
+        colors=dendrogram_plot["leaves_color_list"],
         linestyles=["solid"],
         linewidths=1,
         # alpha=0.5,
@@ -163,7 +164,7 @@ def plot_dendrogram(
 
     axis.hlines(y=0, xmin=axis_xlimits[0], xmax=axis_xlimits[1], **hline_props)
 
-    del dn
+    del dendrogram_plot
 
 
 def plot_swarmplot(y_data: Iterable, unp: str) -> "tuple(Figure, Axes)":

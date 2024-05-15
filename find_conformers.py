@@ -178,6 +178,22 @@ def create_parser(input_args=None):
         default=None,
     )
 
+    parser.add_argument(
+        "-0",
+        "--first_residue_position",
+        help="First residue position in (UniProt) sequence",
+        type=int,
+        default=None,
+    )
+
+    parser.add_argument(
+        "-1",
+        "--last_residue_position",
+        help="Last residue position in (UniProt) sequence",
+        type=int,
+        default=None,
+    )
+
     args = parser.parse_args(input_args)
 
     # Add parsed list of mmCIFs to dictionary
@@ -194,6 +210,12 @@ def main():
 
     # Initialise logger
     logging_utils.init_logger(verbose=args.verbose)
+
+    # End early if only one residue parsed
+    if bool(args.first_residue_position) != bool(args.last_residue_position):
+        raise NameError(
+            "Must parse in BOTH first (-0) and last (-1) residue positions in sequence"
+        )
 
     # Create object for clustering
     unp_cluster = cluster_monomers.ClusterConformations(
@@ -246,12 +268,19 @@ def main():
 
         path_save, png_bool, svg_bool = extract_image_format(args.path_dendrogram)
 
+        # Define residue range if parsed in
+        if args.first_residue_position and args.last_residue_position:
+            this_unp_range = (args.first_residue_position, args.last_residue_position)
+        else:
+            this_unp_range = None
+
         cluster_monomers.render_dendrogram(
             unp=args.uniprot,
             path_results=path_save,
             path_save=path_save,
             png=png_bool,
             svg=svg_bool,
+            unp_range=this_unp_range,
         )
 
 
