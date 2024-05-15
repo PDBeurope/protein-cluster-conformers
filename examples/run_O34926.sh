@@ -18,8 +18,8 @@ python3 find_conformers.py -u "O34926" \
     -i 3nc6 \
     -f \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
-    # -0 1 \
-    # -1 100
+    -0 1 \
+    -1 100
     # -v \
     # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs
 
