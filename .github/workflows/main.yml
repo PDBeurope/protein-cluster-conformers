@@ -11,7 +11,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.10.10]
+        python-version: [3.10.14]
 
     steps:
     - uses: actions/checkout@v2
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
         matrix:
-            python-version: [3.10.10]
+            python-version: [3.10.14]
     needs: build
 
     steps:
