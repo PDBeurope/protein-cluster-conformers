@@ -13,7 +13,7 @@ For intructions on importing `protein-cluster-conformers` into your own Python c
 `protein-cluster-conformers` requires >=Python3.10 to run. Initialise virtual environment and install dependencies with:
 
 ```shell
-$ cd contact_map_difference
+$ cd protein-cluster-conformers]
 $ python3.10 -m venv cluster_venv
 $ source cluster_venv/bin/activate
 $ python -m pip install -r requirements.txt
@@ -31,6 +31,7 @@ $ python find_conformers.py [-h] [-v] -u UNIPROT -m MMCIF [MMCIF ...]
                           	[-g PATH_DENDROGRAM [PATH_DENDROGRAM ...]]
                           	[-w PATH_SWARM [PATH_SWARM ...]] [-o PATH_HISTOGRAM]
                           	[-a PATH_ALPHA_FOLD]
+                            [-0 FIRST_RESIDUE_POSITION] [-1 LAST_RESIDUE_POSITION]
 ```
 
 The following parameters can be parsed:
@@ -58,6 +59,10 @@ optional arguments:
                         Path to save histograms of distance difference maps
   -a PATH_ALPHA_FOLD, --path_alpha_fold PATH_ALPHA_FOLD
                         Path to save AlphaFold Database structure
+  -0 FIRST_RESIDUE_POSITION, --first_residue_position FIRST_RESIDUE_POSITION
+                        First residue position in (UniProt) sequence
+  -1 LAST_RESIDUE_POSITION, --last_residue_position LAST_RESIDUE_POSITION
+                        Last residue position in (UniProt) sequence
 
 ```
 
@@ -148,7 +153,7 @@ The resulting plots are saved in PNG format (to save render time). E.g:
 **Example**: O34926
 
 ```shell
-$ python run_find_clusters.py -u "O34926" \
+$ python find_clusters.py -u "O34926" \
 	-m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
@@ -163,7 +168,7 @@ $ python run_find_clusters.py -u "O34926" \
 From the clustering results, a dendrogram can be rendered to show the relationships between all clustered chains. To save a dendrogram of the hierarchical clustering results, run:
 
 ```shell
-$ python run_find_clusters.py -u "A12345" \
+$ python find_clusters.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -g /path/to/save/dendrogram/ [png svg]
@@ -171,14 +176,16 @@ $ python run_find_clusters.py -u "A12345" \
 
 where either a `png` or `svg` file type is saved. E.g.
 
-<img src="./benchmark_data/figures/P14902_agglomerative_dendrogram.png" alt="Dendrogram of clustered UniProt:P14902 chains, via UPGMA agglomerative clustering" height="350"/>
+<img src="./benchmark_data/figures/O34926_1_405_agglomerative_dendrogram.png" alt="Dendrogram of clustered UniProt:P14902 chains, via UPGMA agglomerative clustering" width="400"/>
+
+<img src="./benchmark_data/figures/P15291_122_398_agglomerative_dendrogram.png" alt="Dendrogram of clustered UniProt:P14902 chains, via UPGMA agglomerative clustering" width="400"/>
 
 <br>
 
 **Example**: O34926
 
 ```shell
-$ python run_find_clusters.py -u "O34926" \
+$ python find_clusters.py -u "O34926" \
 	-m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
@@ -193,7 +200,7 @@ $ python run_find_clusters.py -u "O34926" \
 The scores generated between pairwise structure comparisons can be plotted as a swarm plot by parsing the `-w` flag:
 
 ```shell
-$ python run_find_clusters.py -u "A12345" \
+$ python find_clusters.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -w /path/to/save/swarm_plot/ [png svg]
@@ -269,7 +276,7 @@ $ ./run_O34926.sh
 **Example #2:** P15291
 
 ``` shell
-python3 run_find_conformers.py -u "P15291" \
+python3 find_conformers.py -u "P15291" \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/2fy7_updated.cif A \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/2fya_updated.cif A \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/2fyb_updated.cif A \
