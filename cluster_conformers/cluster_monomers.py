@@ -728,7 +728,7 @@ def render_dendrogram(
             )
             fname = f"{unp}_{unp_range[0]}_{unp_range[1]}_agglomerative_dendrogram"
         else:
-            fname = f"{unp}_aggloomerative_dendrogram"
+            fname = f"{unp}_agglomerative_dendrogram"
 
         # Save file
         io_utils.save_figure(
