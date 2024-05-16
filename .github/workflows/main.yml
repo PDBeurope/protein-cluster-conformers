@@ -38,6 +38,7 @@ jobs:
         file: ./coverage/cobertura-coverage.xml
         flags: unittests
         name: codecov-${{ env.PACKAGE_NAME }}
+        token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true
     - name: Create distribution
       if: github.ref == 'refs/heads/main'
