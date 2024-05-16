@@ -275,6 +275,9 @@ class TestFigureRendering(TestCaseModified):
         executing ClusterConformations().cluster()
         """
 
+        # Remove remnants from previous tests
+        remove_files_in_dir(self.path_save)
+
         # Input data here is a copy of clustering results for UniProt=O34926
         test_unp = "B12345"
 

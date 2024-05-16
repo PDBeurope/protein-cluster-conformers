@@ -1,6 +1,6 @@
 #!/bin/sh
 
-python3.7 find_conformers.py -u "P15291" \
+python3 find_conformers.py -u "P15291" \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/2fyb_updated.cif A \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/2fyd_updated.cif B D \
     -m benchmark_data/examples/P15291/P15291_updated_mmcif/6fwu_updated.cif A B \
@@ -11,6 +11,8 @@ python3.7 find_conformers.py -u "P15291" \
     -d benchmark_data/examples/P15291/P15291_distance_differences/ \
     -s benchmark_data/examples/P15291/P15291_cluster_results/ \
     -g benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
+    -0 122 \
+    -1 398
     # -a benchmark_data/examples/P15291/P15291_alpha_fold_mmcifs \
 
 

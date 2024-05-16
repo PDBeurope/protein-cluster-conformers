@@ -7,7 +7,7 @@ rm benchmark_data/examples/O34926/O34926_cluster_results/*
 
 # mprof run --python
 
-python find_conformers.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
@@ -18,6 +18,8 @@ python find_conformers.py -u "O34926" \
     -i 3nc6 \
     -f \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -0 1 \
+    -1 405
     # -v \
     # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs
 
