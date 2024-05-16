@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API documentation &mdash; protein-cluster-conformers 1.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/styles.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fc837d61"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Developer Guide" href="../guide/developer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            protein-cluster-conformers
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guide/getting_started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guide/getting_started.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guide/getting_started.html#visualising-results">Visualising Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guide/getting_started.html#api-reference">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cluster_conformers.html">cluster_conformers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#module-cluster_conformers.cluster_chains">cluster_conformers.cluster_chains module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#module-cluster_conformers.cluster_monomers">cluster_conformers.cluster_monomers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#module-cluster_conformers.distance_differences">cluster_conformers.distance_differences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#module-cluster_conformers.get_cluster_results">cluster_conformers.get_cluster_results module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cluster_conformers.html#module-cluster_conformers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guide/user_guide.html#minimal-run-example">Minimal run example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/developer.html">Developer Guide</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clustering-monomeric-protein-conformers">Clustering monomeric protein conformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-cluster_conformers.cluster_monomers"><cite>cluster_conformers.cluster_monomers</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_monomers.ClusterConformations"><code class="docutils literal notranslate"><span class="pre">ClusterConformations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_monomers.render_dendrogram"><code class="docutils literal notranslate"><span class="pre">render_dendrogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cluster_conformers.cluster_chains"><cite>cluster_conformers.cluster_chains</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_chains.cluster_agglomerative"><code class="docutils literal notranslate"><span class="pre">cluster_agglomerative()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_chains.make_linkage_matx"><code class="docutils literal notranslate"><span class="pre">make_linkage_matx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_chains.plot_dendrogram"><code class="docutils literal notranslate"><span class="pre">plot_dendrogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.cluster_chains.plot_swarmplot"><code class="docutils literal notranslate"><span class="pre">plot_swarmplot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-distance-differences"><cite>cluster_conformers.distance_differences</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.add_colour_bar"><code class="docutils literal notranslate"><span class="pre">add_colour_bar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.find_largest_distance_from_matxs"><code class="docutils literal notranslate"><span class="pre">find_largest_distance_from_matxs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.format_2d_hist"><code class="docutils literal notranslate"><span class="pre">format_2d_hist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.format_title"><code class="docutils literal notranslate"><span class="pre">format_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.generate_matx_diff"><code class="docutils literal notranslate"><span class="pre">generate_matx_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.get_conformer_id"><code class="docutils literal notranslate"><span class="pre">get_conformer_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.make_dd_maps"><code class="docutils literal notranslate"><span class="pre">make_dd_maps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.make_heatmap_kwargs"><code class="docutils literal notranslate"><span class="pre">make_heatmap_kwargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.distance_differences.plot_2d_hist"><code class="docutils literal notranslate"><span class="pre">plot_2d_hist()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3"><cite>cluster_conformers.cluster_chains</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">cluster_agglomerative()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">make_linkage_matx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">plot_dendrogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">plot_swarmplot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-utils-appearance-utils"><cite>cluster_conformers.utils.appearance_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.appearance_utils.init_plot_appearance"><code class="docutils literal notranslate"><span class="pre">init_plot_appearance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cluster_conformers.utils.db_utils"><cite>cluster_conformers.utils.db_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.db_utils.initialise_oracle_database"><code class="docutils literal notranslate"><span class="pre">initialise_oracle_database()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-utils-download-utils"><cite>cluster_conformers.utils.download_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.download_utils.download_alphafold_mmcif"><code class="docutils literal notranslate"><span class="pre">download_alphafold_mmcif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.download_utils.download_cluster_results"><code class="docutils literal notranslate"><span class="pre">download_cluster_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.download_utils.fetch_benchmark_mmcifs"><code class="docutils literal notranslate"><span class="pre">fetch_benchmark_mmcifs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.download_utils.fetch_updated_mmcif"><code class="docutils literal notranslate"><span class="pre">fetch_updated_mmcif()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cluster_conformers.utils.io_utils"><cite>cluster_conformers.utils.io_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.get_fnames"><code class="docutils literal notranslate"><span class="pre">get_fnames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.load_matrix"><code class="docutils literal notranslate"><span class="pre">load_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.load_matrix_from_tri_upper"><code class="docutils literal notranslate"><span class="pre">load_matrix_from_tri_upper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.load_mmcif"><code class="docutils literal notranslate"><span class="pre">load_mmcif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.rename_file"><code class="docutils literal notranslate"><span class="pre">rename_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.save_compressed_matrix"><code class="docutils literal notranslate"><span class="pre">save_compressed_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.save_figure"><code class="docutils literal notranslate"><span class="pre">save_figure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.save_matrix"><code class="docutils literal notranslate"><span class="pre">save_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.save_string_based_matx"><code class="docutils literal notranslate"><span class="pre">save_string_based_matx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.serial_dump"><code class="docutils literal notranslate"><span class="pre">serial_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.io_utils.serial_load"><code class="docutils literal notranslate"><span class="pre">serial_load()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-utils-linear-algebra-utils"><cite>cluster_conformers.utils.linear_algebra_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.calc_score"><code class="docutils literal notranslate"><span class="pre">calc_score()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.euclidean"><code class="docutils literal notranslate"><span class="pre">euclidean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.find_max"><code class="docutils literal notranslate"><span class="pre">find_max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.generate_ca_matx"><code class="docutils literal notranslate"><span class="pre">generate_ca_matx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.len_overlap"><code class="docutils literal notranslate"><span class="pre">len_overlap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.matx_subtract"><code class="docutils literal notranslate"><span class="pre">matx_subtract()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.matx_trim"><code class="docutils literal notranslate"><span class="pre">matx_trim()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.trim_to_smallest"><code class="docutils literal notranslate"><span class="pre">trim_to_smallest()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.linear_algebra_utils.upper_triangle"><code class="docutils literal notranslate"><span class="pre">upper_triangle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-utils-logging-utils"><cite>cluster_conformers.utils.logging_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.logging_utils.ProgressBar"><code class="docutils literal notranslate"><span class="pre">ProgressBar</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.logging_utils.init_logger"><code class="docutils literal notranslate"><span class="pre">init_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-conformers-utils-parsing-utils"><cite>cluster_conformers.utils.parsing_utils</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.parsing_utils.extract_table"><code class="docutils literal notranslate"><span class="pre">extract_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.parsing_utils.fill_missing_unps"><code class="docutils literal notranslate"><span class="pre">fill_missing_unps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cluster_conformers.utils.parsing_utils.parse_mmcif"><code class="docutils literal notranslate"><span class="pre">parse_mmcif()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">protein-cluster-conformers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-documentation">
+<h1>API documentation<a class="headerlink" href="#api-documentation" title="Link to this heading"></a></h1>
+<p>This part of the documentation is automatically generated from the
+<cite>protein-cluster-conformers</cite> source code and comments.</p>
+<section id="clustering-monomeric-protein-conformers">
+<h2>Clustering monomeric protein conformers<a class="headerlink" href="#clustering-monomeric-protein-conformers" title="Link to this heading"></a></h2>
+<p>Listed below are the functions which can be imported from the <code class="docutils literal notranslate"><span class="pre">cluster_conformers</span></code>
+module, used to cluster monomeric protein conformers.</p>
+<section id="module-cluster_conformers.cluster_monomers">
+<span id="cluster-conformers-cluster-monomers"></span><h3><cite>cluster_conformers.cluster_monomers</cite><a class="headerlink" href="#module-cluster_conformers.cluster_monomers" title="Link to this heading"></a></h3>
+<p>The class here performs clustering on a set of parsed chains.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_monomers.</span></span><span class="sig-name descname"><span class="pre">ClusterConformations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmcifs_and_chains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save_alphafold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nproc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations" title="Link to this definition"></a></dt>
+<dd><p>Object to collect clustering information from a parsed list of paths to updated
+mmCIF files.</p>
+<p>The object contains methods to create CA distance matrices, distance difference
+matrices, a CSV file containing cluster assignments for parsed mmCIFs, dendrogram
+of clustered chains, plots (as 2D histograms) of distance difference maps, and swarm
+plots of scores for chain-chain comparisons.</p>
+<p>The object relies on functions used throughout the codebase to perform conformation
+clustering on any given list of mmCIF files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations.build_clustering_inputs">
+<span class="sig-name descname"><span class="pre">build_clustering_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_save_dd_matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">np.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">np.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations.build_clustering_inputs" title="Link to this definition"></a></dt>
+<dd><p>Constructs the requisite data structures for parsing into the
+cluster_agglomerative() function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_save_dd_matx</strong> (<em>PosixPath</em>) – Path to save distance difference matrices.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Score matrix and label matrix, corresponding to the chain-chain
+comparisons in the score matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>[ ndarray[any, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>], ndarray[any, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>] ]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations.ca_distance">
+<span class="sig-name descname"><span class="pre">ca_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations.ca_distance" title="Link to this definition"></a></dt>
+<dd><p>Calculates a pairwise CA distance matrix for all parsed mmCIF/chains. Stores
+a reference to matrices in dictionary and saves matrix files if path provided.
+Can be called as a public method to generate CA distance matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_save</strong> (<em>PosixPath</em><em>, </em><em>optional</em>) – Path to save CA distance matrices, defaults to None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations.cluster">
+<span class="sig-name descname"><span class="pre">cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_save_cluster_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save_dd_matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations.cluster" title="Link to this definition"></a></dt>
+<dd><p>Clusters the chains parsed by sum-based score. Clustering results are stored to
+the object instance under the following accessible attributes:
+- self.cluster_df : pandas.DataFrame of per-chain clustering results in tabular
+format
+- self.cluster_dict : dictionary of per-chain clustering results, predominently
+used by class in <cite>protein-superpose</cite></p>
+<p>Also writes distance difference matrices and clustering results if paths parsed
+as arguments.</p>
+<p>Along with ca_distance(), this is the only other public method of the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_save_dd_matx</strong> (<em>PosixPath</em><em>, </em><em>optional</em>) – Path to save calculated CA distance-difference
+matrices, defaults to None</p></li>
+<li><p><strong>path_save_cluster_results</strong> (<em>PosixPath</em><em>, </em><em>optional</em>) – PosixPath to save clustering results,
+defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations.remove_entry_matxs">
+<span class="sig-name descname"><span class="pre">remove_entry_matxs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_ca</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_dd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations.remove_entry_matxs" title="Link to this definition"></a></dt>
+<dd><p>Function to remove all CA and distance difference matrices for a given set of
+PDB IDs. This method should be called when existing PDB entries are updated in
+the archive, rendering their CA and distance difference matrices invalid.
+Removing them here will ensure that they are re-generated during the rest of the
+pipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.ClusterConformations.select_representatives">
+<span class="sig-name descname"><span class="pre">select_representatives</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.cluster_monomers.ClusterConformations.select_representatives" title="Link to this definition"></a></dt>
+<dd><p>Method to select representative structures from the set of predicted clusters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_monomers.render_dendrogram">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_monomers.</span></span><span class="sig-name descname"><span class="pre">render_dendrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">png</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unp_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.cluster_monomers.render_dendrogram" title="Link to this definition"></a></dt>
+<dd><p>Plot hierachical dendrogram from clustering results. Must have a linkage matrix and
+ordered labels object already stored. The easiest way to get these is to run the
+ClusterConformations() object first and point to its output folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_save</strong> (<em>PosixPath</em>) – Path to save rendered dendrogram image.</p></li>
+<li><p><strong>png</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Save dendrogram image in PNG format, defaults to False</p></li>
+<li><p><strong>svg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Save dendrogram image in SVG format, defaults to False</p></li>
+<li><p><strong>unp_range</strong> – Range of UniProt residues used for clustering</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cluster_conformers.cluster_chains">
+<span id="cluster-conformers-cluster-chains"></span><h3><cite>cluster_conformers.cluster_chains</cite><a class="headerlink" href="#module-cluster_conformers.cluster_chains" title="Link to this heading"></a></h3>
+<p>Performs agglomerative clustering on the sum-based scores generated from CA distance
+difference matrices.</p>
+<p>Script to plot a dendrogram of the hierarchical clustering results. Can either load the
+results from a pre-saved CSV of the clustering output from cluster.py or work on the
+benchmark dataset.</p>
+<p>Functions included herein to generate a swarm plots from a given dir of pre-generated
+distance difference maps.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_chains.cluster_agglomerative">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">cluster_agglomerative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score_matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AgglomerativeClustering</span></span></span><a class="headerlink" href="#cluster_conformers.cluster_chains.cluster_agglomerative" title="Link to this definition"></a></dt>
+<dd><p>Performs the agglormerative (bottom up) clustering algorithm on a given score
+matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score_matx</strong> (<em>ndarray</em><em>[</em><em>any</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – N*N-square, symmetric matrix of scores used for clustering.</p></li>
+<li><p><strong>cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Threshold below which to begin defining groups as clusters, defaults
+to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scikit-learn Agglomerative model fitted to input data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sklearn.cluster.AgglomerativeClustering</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_chains.make_linkage_matx">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">make_linkage_matx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AgglomerativeClustering</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.cluster_chains.make_linkage_matx" title="Link to this definition"></a></dt>
+<dd><p>Linkage matrix returned from a SKLearn model for agglomerative clustering.
+Returned: Numpy ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>sklearn.cluster.AgglomerativeClustering</em>) – SKLearn agglomerative clustering model, fitted to some score matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix of descriptors for the clustering results from the SKLearn model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[any, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_chains.plot_dendrogram">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">plot_dendrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linkage_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.cluster_chains.plot_dendrogram" title="Link to this definition"></a></dt>
+<dd><p>Create linkage matrix from SKLearn model and plot the dendrogram of nodes. Applies
+this to parsed Matplotlib axis, inplace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – UniProt accession</p></li>
+<li><p><strong>linkage_matrix</strong> (<em>np.ndarray</em>) – Matrix of clustering information (labels and distances)
+derived from the fitted agglomerative clustering model.</p></li>
+<li><p><strong>cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Distance threshold below which clusters were defined, has no affect
+on cluster results and is simply used to plot horizontal line for clarity.
+Should be 0-1, defaults to None.</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – Same parameters as accepted by scipy.cluster.hierarchy.dendrogram()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matplotlib figure and axis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>(matplotlib.figure.Figure, matplotlib.axes.Axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.cluster_chains.plot_swarmplot">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">plot_swarmplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.12)"><span class="pre">Iterable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.cluster_chains.plot_swarmplot" title="Link to this definition"></a></dt>
+<dd><p>Creates a strip plot of non-overlapping data points for a given list of data. The
+values of the data will correspond to their y-values. Their position along the
+x-axis is irrelevant as they’re all identical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_data</strong> (<em>Iterable</em>) – Array of data points to plot.</p></li>
+<li><p><strong>unp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – UniProt accession.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Figure and axis objects containing the plotted swarm plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>(matplotlib.figure.Figure, matplotlib.axes.Axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="cluster-conformers-distance-differences">
+<h3><cite>cluster_conformers.distance_differences</cite><a class="headerlink" href="#cluster-conformers-distance-differences" title="Link to this heading"></a></h3>
+<p id="module-cluster_conformers.distance_differences">Calculates the difference in internal CA distances between all CA distance matrices in
+the set of pre-calculated CA distance matrices defined as being in different
+conformations.</p>
+<p>A table containing conformation IDs must be parsed in order to extract the PDBe and
+chain IDs of structures pertaining to the same UniProt accession and reqion but solved
+with different conformations.</p>
+<p>This script shares functions with intracluster_distance_difference.py, which calculates
+the same distance difference matrices but for structures within the same conformation.</p>
+<p>Generates distance difference maps as 2D histograms to visualise the residue-residue
+differences between protein structures, within and between conformational states.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.add_colour_bar">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">add_colour_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.add_colour_bar" title="Link to this definition"></a></dt>
+<dd><p>Adds colourbar to a figure, based on the heatmap kwargs stored to the figure from
+the plot_2d_hist() function. Figure must have been created with two axes in one row.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.find_largest_distance_from_matxs">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">find_largest_distance_from_matxs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_matxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dd_matxs_fnames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#cluster_conformers.distance_differences.find_largest_distance_from_matxs" title="Link to this definition"></a></dt>
+<dd><p>Finds the largest distance in all distance difference matrices. Used to set the
+maximum value for the colour bar in the distance difference maps.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.format_2d_hist">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">format_2d_hist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.format_2d_hist" title="Link to this definition"></a></dt>
+<dd><p>Applies aesthetic formatting features to the distance difference plot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.format_title">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">format_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdbe1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdbe2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.format_title" title="Link to this definition"></a></dt>
+<dd><p>Creates a title for the distance difference histogram.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.generate_matx_diff">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">generate_matx_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ca_matx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ca_matx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.distance_differences.generate_matx_diff" title="Link to this definition"></a></dt>
+<dd><p>Executes all the functions needed for calculating and saving the difference matrix
+between two matrices. This function does not assume each matrix is identically
+sized but does assume that each is square and all residues account for in the
+matrices map in 1-1, with only the final rows/columns of the larger matrix being
+removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ca_matx1</strong> (<em>ndarray</em>) – First matrix</p></li>
+<li><p><strong>ca_matx2</strong> (<em>ndarray</em>) – Second matrix</p></li>
+<li><p><strong>path_save</strong> (<em>PosixPath</em><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Path to save location, defaults to None</p></li>
+<li><p><strong>return_matx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to return the difference matrix, defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns difference matrix if <cite>return_matx=True</cite>, else the distance matrix
+is simply saved to <cite>path_save</cite> (if parsded in) and nothing is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.get_conformer_id">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">get_conformer_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.get_conformer_id" title="Link to this definition"></a></dt>
+<dd><p>Used to extract the conformer ID from a Pandas DataFrame, given a PDB and chain ID.
+DataFrame must have columns: CHAIN_ID and PDBe_ID.</p>
+<p>Used by format_title() to generate the histogram’s title.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.make_dd_maps">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">make_dd_maps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_matxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save_maps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.distance_differences.make_dd_maps" title="Link to this definition"></a></dt>
+<dd><p>Plot all unique distance difference matrices as 2D histograms (heatmaps). Must
+have the distance difference matrices using the cluster() method on a
+ClusterConformers() object first.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_save</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><em>pathlib.Path</em></a>) – Path to save CA distance-diiference heatmaps.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.make_heatmap_kwargs">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">make_heatmap_kwargs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.make_heatmap_kwargs" title="Link to this definition"></a></dt>
+<dd><p>Generates key word arguments for the distance difference map (rendered as a 2D
+histogram). Used several times throughout scripts so changes here will propagate.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.distance_differences.plot_2d_hist">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.distance_differences.</span></span><span class="sig-name descname"><span class="pre">plot_2d_hist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dd_matx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heatmap_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.distance_differences.plot_2d_hist" title="Link to this definition"></a></dt>
+<dd><p>Plots parsed distance difference matrix as a 2D histogram.</p>
+</dd></dl>
+
+</section>
+<section id="id3">
+<h3><cite>cluster_conformers.cluster_chains</cite><a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p><cite>Currently in alpha stage</cite></p>
+<p id="module-0">Performs agglomerative clustering on the sum-based scores generated from CA distance
+difference matrices.</p>
+<p>Script to plot a dendrogram of the hierarchical clustering results. Can either load the
+results from a pre-saved CSV of the clustering output from cluster.py or work on the
+benchmark dataset.</p>
+<p>Functions included herein to generate a swarm plots from a given dir of pre-generated
+distance difference maps.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">cluster_agglomerative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score_matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AgglomerativeClustering</span></span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Performs the agglormerative (bottom up) clustering algorithm on a given score
+matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score_matx</strong> (<em>ndarray</em><em>[</em><em>any</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – N*N-square, symmetric matrix of scores used for clustering.</p></li>
+<li><p><strong>cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Threshold below which to begin defining groups as clusters, defaults
+to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scikit-learn Agglomerative model fitted to input data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sklearn.cluster.AgglomerativeClustering</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">make_linkage_matx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AgglomerativeClustering</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>Linkage matrix returned from a SKLearn model for agglomerative clustering.
+Returned: Numpy ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>sklearn.cluster.AgglomerativeClustering</em>) – SKLearn agglomerative clustering model, fitted to some score matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix of descriptors for the clustering results from the SKLearn model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[any, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">plot_dendrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linkage_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>Create linkage matrix from SKLearn model and plot the dendrogram of nodes. Applies
+this to parsed Matplotlib axis, inplace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – UniProt accession</p></li>
+<li><p><strong>linkage_matrix</strong> (<em>np.ndarray</em>) – Matrix of clustering information (labels and distances)
+derived from the fitted agglomerative clustering model.</p></li>
+<li><p><strong>cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Distance threshold below which clusters were defined, has no affect
+on cluster results and is simply used to plot horizontal line for clarity.
+Should be 0-1, defaults to None.</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – Same parameters as accepted by scipy.cluster.hierarchy.dendrogram()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matplotlib figure and axis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>(matplotlib.figure.Figure, matplotlib.axes.Axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.cluster_chains.</span></span><span class="sig-name descname"><span class="pre">plot_swarmplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.12)"><span class="pre">Iterable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><p>Creates a strip plot of non-overlapping data points for a given list of data. The
+values of the data will correspond to their y-values. Their position along the
+x-axis is irrelevant as they’re all identical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_data</strong> (<em>Iterable</em>) – Array of data points to plot.</p></li>
+<li><p><strong>unp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – UniProt accession.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Figure and axis objects containing the plotted swarm plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>(matplotlib.figure.Figure, matplotlib.axes.Axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading"></a></h2>
+<section id="cluster-conformers-utils-appearance-utils">
+<h3><cite>cluster_conformers.utils.appearance_utils</cite><a class="headerlink" href="#cluster-conformers-utils-appearance-utils" title="Link to this heading"></a></h3>
+<p id="module-cluster_conformers.utils.appearance_utils">Functions for modifying data visualisation behaviour and calculation progression.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.appearance_utils.init_plot_appearance">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.appearance_utils.</span></span><span class="sig-name descname"><span class="pre">init_plot_appearance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.utils.appearance_utils.init_plot_appearance" title="Link to this definition"></a></dt>
+<dd><p>Setup of default appearance for any plot</p>
+</dd></dl>
+
+</section>
+<section id="module-cluster_conformers.utils.db_utils">
+<span id="cluster-conformers-utils-db-utils"></span><h3><cite>cluster_conformers.utils.db_utils</cite><a class="headerlink" href="#module-cluster_conformers.utils.db_utils" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.db_utils.initialise_oracle_database">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.db_utils.</span></span><span class="sig-name descname"><span class="pre">initialise_oracle_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.utils.db_utils.initialise_oracle_database" title="Link to this definition"></a></dt>
+<dd><p>Initialise Oracle with the TNS ADMIN file</p>
+<p>TODO: Use of this function inside of Codon must be validated</p>
+</dd></dl>
+
+</section>
+<section id="cluster-conformers-utils-download-utils">
+<h3><cite>cluster_conformers.utils.download_utils</cite><a class="headerlink" href="#cluster-conformers-utils-download-utils" title="Link to this heading"></a></h3>
+<p id="module-cluster_conformers.utils.download_utils">This script includes functions to access AlphaFold2 structures for inclusion in monomer
+superimposision via GESAMT and conformational clustering via CA distance-based score.</p>
+<p>Functions here should be imported into superpose.py and run only upon request by user.
+Modification of the clustering output should also</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.download_utils.download_alphafold_mmcif">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.download_utils.</span></span><span class="sig-name descname"><span class="pre">download_alphafold_mmcif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniprot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.download_utils.download_alphafold_mmcif" title="Link to this definition"></a></dt>
+<dd><p>Downloads AlphaFold Database structure to specified location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uniprot</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – UniProt accession</p></li>
+<li><p><strong>path_save</strong> (<em>PosixPath</em>) – Path to save AlphaFold structure</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ConnectionError" title="(in Python v3.12)"><strong>ConnectionError</strong></a> – Query-related download error</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path to saved AlphaFold mmCIF</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>PosixPath</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.download_utils.download_cluster_results">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.download_utils.</span></span><span class="sig-name descname"><span class="pre">download_cluster_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniprot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.download_utils.download_cluster_results" title="Link to this definition"></a></dt>
+<dd><p>Function to download cluster results from the PDBe’s GraphAPI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uniprot</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
+<li><p><strong>save_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>|</em><em>PosixPath</em>) – _description_</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.download_utils.fetch_benchmark_mmcifs">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.download_utils.</span></span><span class="sig-name descname"><span class="pre">fetch_benchmark_mmcifs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_benchmark_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.download_utils.fetch_benchmark_mmcifs" title="Link to this definition"></a></dt>
+<dd><p>Downloads all updated mmCIF files located inside the parsed benchmark dataset file.
+Should not be run frequently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_benchmark_df</strong> (<em>PosixPath</em>) – Path to benchmark dataset</p></li>
+<li><p><strong>path_save</strong> (<em>PosixPath</em>) – Path to save downloaded mmCIFs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.download_utils.fetch_updated_mmcif">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.download_utils.</span></span><span class="sig-name descname"><span class="pre">fetch_updated_mmcif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.download_utils.fetch_updated_mmcif" title="Link to this definition"></a></dt>
+<dd><p>Function to download updated mmCIF file from the PDBe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – PDB accession code</p></li>
+<li><p><strong>path_save</strong> (<em>Path</em>) – Location to save downloaded updated mmCIF</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cluster_conformers.utils.io_utils">
+<span id="cluster-conformers-utils-io-utils"></span><h3><cite>cluster_conformers.utils.io_utils</cite><a class="headerlink" href="#module-cluster_conformers.utils.io_utils" title="Link to this heading"></a></h3>
+<p>Tools for managing IO operations for files required and created during clustering. Most
+read operations pertain to the updated mmCIF file format and most write operations
+relate to matrices and figures.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.get_fnames">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">get_fnames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.get_fnames" title="Link to this definition"></a></dt>
+<dd><p>Given a path to a dir containing files, returns a list of file names in the dir
+(including the path to their location prefixed) as strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to folder containing files to return.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of files contained in parsed path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.load_matrix">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">load_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.load_matrix" title="Link to this definition"></a></dt>
+<dd><p>Loads matrix (numpy array) into variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to saved matrix (including file name)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix containing in .pnz file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.load_matrix_from_tri_upper">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">load_matrix_from_tri_upper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.load_matrix_from_tri_upper" title="Link to this definition"></a></dt>
+<dd><p>Function for loading compressed, symmetric matrices in which only the upper half was
+saved.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.load_mmcif">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">load_mmcif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Block</span></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.load_mmcif" title="Link to this definition"></a></dt>
+<dd><p>Returns mmCIF Gemmi object given path to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><em>pathlib.Path</em></a>) – Load (updated) mmCIF file into memory.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – File parsed was not mmCIF or gzip mmCIF</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Contents of mmCIF as Gemmi Block object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>gemmi.cif.Block</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.rename_file">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">rename_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.rename_file" title="Link to this definition"></a></dt>
+<dd><p>Given a path to a file and a new file name (new_fname), the function renames the
+file. This function was made for renaming AlphaFold mmCIF structure files, to
+retain compatibility with other mmCIF parsing functions in the codebase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><em>pathlib.Path</em></a>) – Path to original file name.</p></li>
+<li><p><strong>new_fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – New file name (parent path inherited from path_file).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.save_compressed_matrix">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">save_compressed_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.save_compressed_matrix" title="Link to this definition"></a></dt>
+<dd><p>Parse matrix and path to save it. Saves matrix as .npz file. Compression techniques
+used are specific to N*N-square, symmetric matrices. Parsing in anything else could
+result in data loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>np.ndarray</em>) – Any N*N-square, symmetric matrix.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><em>pathlib.Path</em></a><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to save the matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.save_figure">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tmp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">png</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.save_figure" title="Link to this definition"></a></dt>
+<dd><p>Saves a matplotlib figure. Figure object does not need to be parsed in as an
+argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_save</strong> (<em>PosixPath</em>) – Path to save figure.</p></li>
+<li><p><strong>save_fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – File name (saved in parent path defined by path_save), defaults
+to “tmp”</p></li>
+<li><p><strong>png</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Save image in PNG format, defaults to True</p></li>
+<li><p><strong>svg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Save image in SVG format, defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.save_matrix">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">save_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.save_matrix" title="Link to this definition"></a></dt>
+<dd><p>Saves a matrix in a compressed but non-numerically transformed format. Should be
+used to save matrices that contain mix data type elements, are non-symmetric, not
+N*N or contain numeric values which must have large precision preserved (e.g.
+double, float64)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>ndarray</em>) – Matrix object to save</p></li>
+<li><p><strong>path</strong> (<em>PosixPath</em><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to save file (include file name)</p></li>
+<li><p><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Identification label in case save is unsuccessful, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.save_string_based_matx">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">save_string_based_matx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.save_string_based_matx" title="Link to this definition"></a></dt>
+<dd><p>Saves a string-containing matrix in an uncompressed format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>ndarray</em>) – Matrix filled with string elements.</p></li>
+<li><p><strong>path</strong> (<em>PosixPath</em><em>|</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to save matrix.</p></li>
+<li><p><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Optional label, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.serial_dump">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">serial_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.io_utils.serial_dump" title="Link to this definition"></a></dt>
+<dd><p>Function for dumping a parsed object as a serialised object file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object</strong> (<em>Any</em>) – Python object to serialise</p></li>
+<li><p><strong>path_fname</strong> (<em>PosixPath</em>) – Path (including file name) to save serialised object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.io_utils.serial_load">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.io_utils.</span></span><span class="sig-name descname"><span class="pre">serial_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.12)"><span class="pre">PosixPath</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.utils.io_utils.serial_load" title="Link to this definition"></a></dt>
+<dd><p>Loads a serialised object stored at the given path. Returns whatever object was in
+the serialised file object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_fname</strong> (<em>PosixPath</em>) – Path to serialised Python object (including file name).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Python object stored in serialised file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="cluster-conformers-utils-linear-algebra-utils">
+<h3><cite>cluster_conformers.utils.linear_algebra_utils</cite><a class="headerlink" href="#cluster-conformers-utils-linear-algebra-utils" title="Link to this heading"></a></h3>
+<p id="module-cluster_conformers.utils.linear_algebra_utils">Functions for performing linear algebra on matrices pertaining to protein CA distances.</p>
+<p>Used by other scripts in the peptide_analysis library and the ClusterConformers() class
+in the find_conformers() script. These functions perform the majority of the
+calculations performed in the package, with the scripts they call handling specific
+logic, such as deciding which chains to call these functions on.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.calc_score">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">calc_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dd_matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unps1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unps2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.calc_score" title="Link to this definition"></a></dt>
+<dd><p>Calcultes the distance-based score used for agglomerative clustering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dd_matx</strong> (<em>np.ndarray</em>) – Square matrix of absolute distance differences</p></li>
+<li><p><strong>unps1</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><em>set</em></a>) – UniProt residue IDs for protein 1</p></li>
+<li><p><strong>unps2</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><em>set</em></a>) – UniProt residue IDs for protein 2</p></li>
+<li><p><strong>res_mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Number of elements above diagonal to ignore, defaults to 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CA distance-based clustering score</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.euclidean">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">euclidean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords_3D_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords_3D_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.euclidean" title="Link to this definition"></a></dt>
+<dd><p>Finds the Euclidean distance between two points in 3D space. Now needed as math
+module in Python3.x &lt;= 3.7 lacks the math.dist function. Alternatives from Scipy and
+Numpy are incredibly slow in comparison.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords_3D_1</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – Point 1 = (x, y, z)</p></li>
+<li><p><strong>coords_3D_2</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – Point 2 = (x, y, z)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Euclidean distance between two Cartesian coordinates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.find_max">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">find_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.find_max" title="Link to this definition"></a></dt>
+<dd><p>Returns the maximum element from a matrix of floats, if any are larger than the
+starting_max value. Otherwise, starting_max is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matx</strong> (<em>np.ndarray</em>) – N*M matrix</p></li>
+<li><p><strong>starting_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Initial maximum value to beat, defaults to 0.0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New maximum value (if &gt;starting_max)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.generate_ca_matx">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">generate_ca_matx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.generate_ca_matx" title="Link to this definition"></a></dt>
+<dd><p>Takes three lists corresponding to x,y,z coordinates and returns a matrix of the
+pair-wise Euclidian distances between all coordinates. Each input must be
+1*N-dimensional and an N*N-dimensional Numpy matrix is returned.
+Requirement: <cite>len(x) == len(y) == len(z)</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – Cartesian x coords</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – Cartesian y coords</p></li>
+<li><p><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – Cartesian z coords</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of Euclidean distances</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.len_overlap">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">len_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unps1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unps2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.len_overlap" title="Link to this definition"></a></dt>
+<dd><p>Parse in a distance difference matrix and get the length of the overlap.
+NB: Replace with function that takes two UNP lists and returns the Nump 1D
+intersect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unps1</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – UniProt residue IDs for protein 1</p></li>
+<li><p><strong>unps2</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a>) – UniProt residue IDs for protein 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Length of residue overlap</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.matx_subtract">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">matx_subtract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.matx_subtract" title="Link to this definition"></a></dt>
+<dd><p>Returns difference between matx1 and matx2. Sign of the elements in the returned
+difference matrix is ignored – all elements in matrix &gt; 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matx1</strong> (<em>np.ndarray</em>) – Matrix 1</p></li>
+<li><p><strong>matx2</strong> (<em>np.ndarray</em>) – Matrix 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix of absolute differences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.matx_trim">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">matx_trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.matx_trim" title="Link to this definition"></a></dt>
+<dd><p>Truncates the final (end) rows and columns for a given matrix.
+end = the new end of the matrix. If the number of rows/columns in the matrix exceeds
+<cite>end</cite>, the function will remove them, returning the truncated matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matx</strong> (<em>np.ndarray</em>) – Square matrix</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Final index position before truncation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.12)"><strong>IndexError</strong></a> – Negative index position parsed</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trimmed (end truncated) matrix</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.trim_to_smallest">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">trim_to_smallest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.trim_to_smallest" title="Link to this definition"></a></dt>
+<dd><p>Given two matrices, function truncates the larger one by removing exactly the number
+of rows and columns (from its end) by which it is larger. Either mtx1 or mtx2 can be
+the smaller of the two.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx1</strong> (<em>np.ndarray</em>) – Square matrix 1</p></li>
+<li><p><strong>mtx2</strong> (<em>np.ndarray</em>) – Square matrix 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix 1 and 2, truncated to whichever is smallest</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>( np.ndarray, np.ndarray )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.linear_algebra_utils.upper_triangle">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.linear_algebra_utils.</span></span><span class="sig-name descname"><span class="pre">upper_triangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cluster_conformers.utils.linear_algebra_utils.upper_triangle" title="Link to this definition"></a></dt>
+<dd><p>Masks the diagonal of a given matrix within a given window size. Returns a 1D list
+of the linearised elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matx</strong> (<em>np.ndarray</em>) – Square matrix</p></li>
+<li><p><strong>res_mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Position above diagonal to begin transformation, defaults to 0</p></li>
+<li><p><strong>numeric</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Remove np.NaN values, defaults to True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Upper triangle as a 1D array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="cluster-conformers-utils-logging-utils">
+<h3><cite>cluster_conformers.utils.logging_utils</cite><a class="headerlink" href="#cluster-conformers-utils-logging-utils" title="Link to this heading"></a></h3>
+<dl class="py class" id="module-cluster_conformers.utils.logging_utils">
+<dt class="sig sig-object py" id="cluster_conformers.utils.logging_utils.ProgressBar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.logging_utils.</span></span><span class="sig-name descname"><span class="pre">ProgressBar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maximum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.utils.logging_utils.ProgressBar" title="Link to this definition"></a></dt>
+<dd><p>Object for displaying and udating a progress bar in the terminal. Example of
+outputs:</p>
+<p>Progress: […………………………………………..] 0.0 % (0/100)
+Progress: [=========================…………………….] 50.0 % (50/100)
+Progress: [==================================================] 100.0 % (100/100)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cluster_conformers.utils.logging_utils.ProgressBar.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#cluster_conformers.utils.logging_utils.ProgressBar.update" title="Link to this definition"></a></dt>
+<dd><p>Updates a progress bar object by incrementing progress by ++1. Maximum progress
+for progress bar’s size is defined on instantiation of new progress_bar object
+so counter does not have to be parsed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.logging_utils.init_logger">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.logging_utils.</span></span><span class="sig-name descname"><span class="pre">init_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_conformers.utils.logging_utils.init_logger" title="Link to this definition"></a></dt>
+<dd><p>Initialises a logging object, accessible using the __name__ variable.</p>
+</dd></dl>
+
+</section>
+<section id="cluster-conformers-utils-parsing-utils">
+<h3><cite>cluster_conformers.utils.parsing_utils</cite><a class="headerlink" href="#cluster-conformers-utils-parsing-utils" title="Link to this heading"></a></h3>
+<p id="module-cluster_conformers.utils.parsing_utils">Functions for data transformations and selections from updated mmCIF files loaded as
+Gemmi objects.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.parsing_utils.extract_table">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.parsing_utils.</span></span><span class="sig-name descname"><span class="pre">extract_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mmcif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Table</span></span></span><a class="headerlink" href="#cluster_conformers.utils.parsing_utils.extract_table" title="Link to this definition"></a></dt>
+<dd><p>Produces a Gemmi table based on a list of parsed column names in the _atom_site.
+loop.</p>
+<p>Input: Gemmi block, list of search terms
+Returned: Gemmi table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mmcif</strong> (<em>gemmi.cif.Block</em>) – Contents of (updated) mmCIF file</p></li>
+<li><p><strong>search_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Loop terms to extract</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Values for searched loop terms</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gemmi.cif.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.parsing_utils.fill_missing_unps">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.parsing_utils.</span></span><span class="sig-name descname"><span class="pre">fill_missing_unps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.utils.parsing_utils.fill_missing_unps" title="Link to this definition"></a></dt>
+<dd><p>Given a list of unique UniProt indices and separate lists of 3D Cartesian coords,
+the function inserts NaN values into each coordinate list where a gap in the UniProt
+sequence is found. Missing UniProt indices are also inserted into the unps list.
+Only gaps and N-terminal truncations are added, nothing is filled in beyond the
+highest UniProt index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>structure_coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – (x, y, z) coordinates and UniProt residue indices.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Same (x, y, z) coordinates and UniProt residue indices as input, with any
+missing coordinates filled as np.NaN</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cluster_conformers.utils.parsing_utils.parse_mmcif">
+<span class="sig-prename descclassname"><span class="pre">cluster_conformers.utils.parsing_utils.</span></span><span class="sig-name descname"><span class="pre">parse_mmcif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mmcif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#cluster_conformers.utils.parsing_utils.parse_mmcif" title="Link to this definition"></a></dt>
+<dd><p>Takes a loaded updated mmCIF as a Gemmi block file and the desired author-specified
+chain ID. Returns a dictionary of four key-value pairs:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cartesian x coords</p></li>
+<li><p>Cartesian y coords</p></li>
+<li><p>Cartesian x coords</p></li>
+<li><p>UniProt residue indices</p></li>
+</ul>
+</div></blockquote>
+<p>Each key (“cartn_x”, “cartn_y”, “cartn_z”, “unp_res_ids”) is string type and each
+value is list type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mmcif</strong> (<em>gemmi.cif.Block</em>) – Contents of (updated) mmCIF file.</p></li>
+<li><p><strong>chain_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Structural asymmetry ID (chain identifier).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><strong>TypeError</strong></a> – Column in updated mmCIF file is missing.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cartesian (x, y, z) coordinates and UniProt residue indices.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../guide/developer.html" class="btn btn-neutral float-left" title="Developer Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Protein Data Bank in Europe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
