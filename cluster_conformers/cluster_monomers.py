@@ -222,6 +222,7 @@ class ClusterConformations:
         if not path_save_this_ca_matx.with_suffix(".npz").exists() or self.force:
 
             pdbe_chain_id_split = pdbe_chain_id.split("_")
+            
             # Extract x, y, z, and UNP index info from mmCIF/chain
             mmcif = io_utils.load_mmcif(self.mmcif_paths[pdbe_chain_id_split[0]])
             xyz_unp_dict = parsing_utils.parse_mmcif(mmcif, pdbe_chain_id_split[1])
@@ -278,7 +279,7 @@ class ClusterConformations:
 
         # Dir to save the raw UniProt residue IDs as 1D np.array()s
         self.path_save_unps = path_save.joinpath("unp_residue_ids")
-        self.path_save_unps.mkdir(exist_ok=True)
+        self.path_save_unps.mkdir(parents=True, exist_ok=True)
 
         self.path_save_base_ca = path_save
 
@@ -464,6 +465,10 @@ class ClusterConformations:
         """
 
         logger.info("Generating distance difference matrices...")
+        if not path_save_dd_matx:
+            raise ValueError("Path to save distance difference matrices not specified.")
+        
+        path_save_dd_matx.mkdir(parents=True, exist_ok=True)
         self.score_matx, self.label_matx = self.build_clustering_inputs(
             path_save_dd_matx
         )
@@ -517,6 +522,8 @@ class ClusterConformations:
 
         # Write out clustering results if path specified
         if path_save_cluster_results:
+
+            path_save_cluster_results.mkdir(parents=True, exist_ok=True)
 
             # Save clustering results
             path_save_all_conf = path_save_cluster_results.joinpath(
@@ -710,7 +717,7 @@ def render_dendrogram(
 
         fig, ax = plt.subplots(1, 1)
 
-        logger.info("Rendering dendogram")
+        logger.info("Rendering dendrogram")
         cluster_chains.plot_dendrogram(
             unp,
             ax,

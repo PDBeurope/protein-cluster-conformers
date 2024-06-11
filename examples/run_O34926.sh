@@ -1,27 +1,29 @@
 #!/bin/sh
 
-rm benchmark_data/examples/O34926/O34926_ca_distances/*
-rm benchmark_data/examples/O34926/O34926_ca_distances/unp_residue_ids/*
-rm benchmark_data/examples/O34926/O34926_distance_differences/*
-rm benchmark_data/examples/O34926/O34926_cluster_results/*
+path_mmcifs="benchmark_data/examples/O34926/O34926_updated_mmcif"
+path_ca_distances="benchmark_data/examples/O34926/O34926_ca_distances"
+path_distance_differences="benchmark_data/examples/O34926/O34926_distance_differences"
+path_cluster_results="benchmark_data/examples/O34926/O34926_cluster_results"
 
-# mprof run --python
+rm $path_ca_distances/*
+rm $path_ca_distances/unp_residue_ids/*
+rm $path_distance_differences/*
+rm $path_cluster_results/*
 
-python3 find_conformers.py -u "O34926" \
-    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
-    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
-    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
-    -c benchmark_data/examples/O34926/O34926_ca_distances/ \
-    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
-    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
-    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
-    -i 3nc6 \
-    -f \
-    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+python3 find_conformers.py \
+    -u "O34926" \
+    -m $path_mmcifs/3nc7_updated.cif A B \
+    -m $path_mmcifs/3nc5_updated.cif A B \
+    -m $path_mmcifs/3nc3_updated.cif A B \
+    -m $path_mmcifs/3nc6_updated.cif A B \
+    -c $path_ca_distances \
+    -d $path_distance_differences \
+    -s $path_cluster_results \
+    -g $path_cluster_results png svg \
     -0 1 \
-    -1 405
+    -1 405 \
+    -f \
     # -v \
-    # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs
-
-# -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
-# -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs \
+    # -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
+    # -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
