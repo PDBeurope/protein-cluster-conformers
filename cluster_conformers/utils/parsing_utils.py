@@ -5,9 +5,12 @@ Gemmi objects.
 
 # Third party imports
 from logging import getLogger
-
 from gemmi import cif
-from numpy import NaN
+import itertools
+import numpy as np
+from sklearn.cluster import AgglomerativeClustering
+from typing import Generator, Any
+
 
 logger = getLogger(__name__)
 
@@ -68,7 +71,7 @@ def fill_missing_unps(
 
         # Add NaN into coordinates where UniProt is missing
         for coord_key in ("cartn_x", "cartn_y", "cartn_z"):
-            structure_coords[coord_key].insert(index, NaN)
+            structure_coords[coord_key].insert(index, np.NaN)
 
     return structure_coords
 
@@ -156,3 +159,274 @@ def parse_mmcif(mmcif: cif.Block, chain_id: str) -> "dict[str, list[str|float]]"
     }
 
     return structure_coords
+
+
+class SequenceRanges(object):
+    """
+    A class handling sequence ranges: do they need to merge, etc
+    """
+
+    def __init__(self, range_region: dict):
+
+        # This is the dictionary with each pdbid and chain with the start and end
+        self.range_region = range_region
+
+        # Dict returned to the superpose class
+        self.segment_pdbchain = {}
+
+    def get_sequence_segments(
+        self,
+        threshold: float = 0.99,
+        linkage: str = "single",
+        metric: str = "overlap",
+        gap_threshold: int = 25,
+    ) -> "dict[int, dict[str, list]]":
+        """
+        This function will take in the dictionary made by either the query, or by the
+        JSON Parsing. Then, it will group the structures based on overlap of sequence
+        ranges.
+
+        :param threshold: an optional parameter defining the minimum overlap
+            the distance matrix is constructed and normalised to the range [0-1]
+            with 0 meaning perfect overlap, and 1 meaning no overlap
+            (e.g., the default threshold value of 0.99 would mean
+            that an overlap with ~1% of residues of the range would be accepted)
+        :param linkage:
+            type of clustering for sklearn.cluster.AgglomerativeClustering
+            choice of 'single' (default), 'ward', 'complete' and 'average'
+        :return: A dictionary with the number of the segment as key, and the list of all
+            of the pdb chains in that specific segment as value
+        :raises: Nothing
+
+        Example input dictionary.
+        Note that each chain could potentially include more than one segment
+        range_region =  {
+            '5re4A': [(3264, 3569)],
+            '5re5A': [(3264, 3569)],
+            '6vwwA': [(6452, 6798)],
+            '6vwwB': [(6452, 6798)],
+            '6m03A': [(3264, 3569)],
+            '5rehA': [(3264, 3569)],
+            ...
+        }
+        """
+
+        all_chains = list(self.range_region.keys())
+        n_chains = len(all_chains)
+
+        # Create a matrix of overlap distances - each chain against each chain
+        overlap_matrix = np.zeros((n_chains, n_chains), dtype=float)
+
+        for i in range(n_chains):
+            ranges_i = self.range_region[all_chains[i]]["ranges"]
+
+            for j in range(i + 1, n_chains):
+                ranges_j = self.range_region[all_chains[j]]["ranges"]
+                overlap_ij = self.compute_overlap(ranges_i, ranges_j, metric=metric)
+                overlap_matrix[i, j] = overlap_ij
+                overlap_matrix[j, i] = overlap_ij
+
+        # Defines the segments
+        clustering = AgglomerativeClustering(
+            n_clusters=None,
+            distance_threshold=threshold,
+            metric="precomputed",
+            linkage=linkage,
+        ).fit(overlap_matrix)
+
+        # Formats the segments into a dictionaries
+        labels = clustering.labels_
+        for i in range(n_chains):
+            pdbchain = all_chains[i]
+
+            if labels[i] + 1 not in self.segment_pdbchain:
+                self.segment_pdbchain[labels[i] + 1] = {
+                    "pdbchains": [pdbchain],
+                    "ranges": self.range_region[pdbchain]["ranges"],
+                }
+
+            else:
+                self.segment_pdbchain[labels[i] + 1]["pdbchains"].append(pdbchain)
+                self.segment_pdbchain[labels[i] + 1]["ranges"].extend(
+                    self.range_region[pdbchain]["ranges"]
+                )
+
+        # Merge recorded ranges for each segment
+        for segment in self.segment_pdbchain:
+
+            # Remove chains with unmodelled regions
+            logger.info(f"Checking segment {segment} for chains with unmodelled gaps")
+
+            for pdbchain in self.segment_pdbchain[segment]["pdbchains"]:
+                logger.debug(f"Checking {pdbchain} for gaps")
+
+                # Unmodelled residues
+                unmodelled_residues = missing_integers(
+                    self.range_region[pdbchain]["residue_ids"]
+                )
+
+                # No gaps found
+                if len(unmodelled_residues) == 0:
+                    logger.debug(f"No gaps found in {pdbchain}")
+                    continue
+
+                # Convert set to tuple to allow indexing
+                max_gap = find_max_gap((*unmodelled_residues,))
+                logger.info(f"Max gap in {pdbchain} is {max_gap}")
+
+                # If max gap is greater than threshold, reject the chain
+                if max_gap > gap_threshold:
+                    logger.info(
+                        f"Rejecting {pdbchain} due to gap ({max_gap}) > {gap_threshold}"
+                        f" residues"
+                    )
+                    self.remove_pdbchain(segment, pdbchain)
+
+            # Merge all the overlapping ranges togther into one range
+            self.segment_pdbchain[segment]["ranges"] = self.merge_ranges(
+                self.segment_pdbchain[segment]["ranges"]
+            )
+
+        return self.segment_pdbchain
+
+    def remove_pdbchain(self, segment: int, pdbchain: str) -> None:
+        """
+        Remove a pdbchain from the segment dictionary/list records.
+
+        :param segment: Segment number (dict key)
+        :type segment: int
+        :param pdbchain: pdbid and chain id (e.g. 1atpA).
+        :type pdbchain: str
+        """
+        index_pos = self.segment_pdbchain[segment]["pdbchains"].index(pdbchain)
+        self.segment_pdbchain[segment]["pdbchains"].remove(pdbchain)
+        self.segment_pdbchain[segment]["ranges"].pop(index_pos)
+
+    def compute_overlap(
+        self,
+        ranges_i: "list[tuple[int, int]]",
+        ranges_j: "list[tuple[int, int]]",
+        metric: str = "overlap",
+    ) -> float:
+        """
+        A helper function to compute an overlap coefficient over sequence ranges
+        for chains i and j.
+
+        :param ranges_i: a list of tuples [(begin, end), ...] for the first chain
+        :type ranges_i: list[tuple[int, int]]
+        :param ranges_j: a list of tuples [(begin, end), ...] for the second chain
+        :type ranges_j: list[tuple[int, int]]
+        :param metric: a choice of overlap (default) or jaccard
+            overlap: returns (1 - overlap/min(i,j))
+            A perfect overlap of identical ranges would give 0
+            A short range fully within a long range would also give 0
+            No overlap would give a score of 1
+            An overlap of 50 residues between two 100-residue strong
+                ranges would give a score of 0.5
+            jaccard: returns (1 - overlap/union)
+            A perfect overlap of identical ranges would give 0
+            A short range (say 50 residues) fully within a long range (of 100 residues)
+                would give a score of 0.5
+            No overlap would give a score of 1
+            An overlap of 50 residues between two 100-residue strong
+                ranges would give a score of 0.66
+        :type metric: str
+        :return: A dissimilarity score controlled by 'metric'
+        :rtype: float
+        """
+
+        # For quick set operations
+        set_i = set()
+        set_j = set()
+
+        # Define sets
+        for r in ranges_i:
+            set_i = set_i.union(range(r[0], r[1] + 1))
+        for r in ranges_j:
+            set_j = set_j.union(range(r[0], r[1] + 1))
+
+        # Decide on the denominator
+        if metric.lower() == "overlap":
+            # Shortest set
+            denominator = min(len(set_i), len(set_j))
+
+        elif metric.lower() == "jaccard":
+            # Union of sets
+            denominator = len(set_i | set_j)
+
+        else:
+            raise ValueError(
+                "Incorrect overlap metric provided. Should be 'overlap' or 'jaccard', "
+                f"but {metric} was given."
+            )
+
+        # Intersct over denominator (1 - overlap/denominator)
+        return 1 - len(set_i & set_j) / denominator
+
+    def merge_ranges(self, ranges: "list[tuple[int, int]]") -> "list[tuple[int, int]]":
+        """
+        Helper function to merge sets of ranges.
+        :param ranges: sets of sequence ranges for two chains i and j
+        :type ranges: list[tuple[int, int]]
+        :return: list of sequence ranges
+        """
+        merged_set = set()
+
+        for r in ranges:
+            merged_set = merged_set.union(range(r[0], r[1] + 1))
+
+        return list(to_ranges(merged_set))
+
+
+def to_ranges(iterable: "list|tuple") -> Generator[Any, Any]:
+    """
+    From
+    https://stackoverflow.com/questions/4628333/
+    :param iterable: An iterable of integers
+    :type iterable: list|tuple
+    :return: A generator of ranges
+    :rtype: Generator[Any, Any, Any]
+    """
+    iterable = sorted(set(iterable))
+
+    for _, group in itertools.groupby(enumerate(iterable), lambda t: t[1] - t[0]):
+        group = list(group)
+        yield group[0][1], group[-1][1]
+
+
+def find_max_gap(residue_ids: "tuple|list") -> int:
+    """
+    Identifies the largest contiguous gap in a list of integers (e.g. residue IDs)
+
+    :param residue_ids: Iterable of integers (e.g. tuple residue IDs). It does not need
+        to be mutatble, but it must be indexable.
+    :type residue_ids: tuple|list
+    :return: The largest contiguous gap in the array of integers
+    :rtype: int
+    """
+    max_gap = 0  # Key measure for recording gap size
+    gap = 0
+    for i, res in enumerate(residue_ids[:-1]):
+        # Record incremented gap or if no gap restore to zero
+        gap += 1 if res == residue_ids[i + 1] - 1 else 0
+
+        # Record max gap
+        if gap > max_gap:
+            max_gap = gap
+
+    return max_gap
+
+
+def missing_integers(sequence: set) -> set:
+    """
+    Find the missing integers in a sequence
+
+    :param sequence: Sequence of integers
+    :type sequence: set
+    :return: Set of the missing integers from the sequence
+    :rtype: set
+    """
+    # Residue IDs NOT in common
+    complete_set = set(range(min(sequence), max(sequence) + 1))
+
+    return sequence ^ complete_set
