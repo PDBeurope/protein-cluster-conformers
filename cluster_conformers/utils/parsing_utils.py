@@ -378,7 +378,7 @@ class SequenceRanges(object):
         return list(to_ranges(merged_set))
 
 
-def to_ranges(iterable: "list|tuple") -> Generator[Any, Any]:
+def to_ranges(iterable: "list|tuple") -> Generator[Any, Any, Any]:
     """
     From
     https://stackoverflow.com/questions/4628333/
