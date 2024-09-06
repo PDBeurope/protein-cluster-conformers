@@ -103,18 +103,18 @@ def create_parser(input_args=None):
     )
 
     parser.add_argument(
-        "-s",
-        "--path_clusters",
-        help="Path to save clustering results",
-        type=PosixPath,
-    )
-
-    parser.add_argument(
         "-c",
         "--path_ca",
         help="Path to save CA distance matrices",
         type=PosixPath,
         required=True,
+    )
+
+    parser.add_argument(
+        "-s",
+        "--path_clusters",
+        help="Path to save clustering results",
+        type=PosixPath,
     )
 
     parser.add_argument(
@@ -133,13 +133,13 @@ def create_parser(input_args=None):
         type=str,
     )
 
-    parser.add_argument(
-        "-w",
-        "--path_swarm",
-        help="Path to save swarm plot of scores",
-        nargs="+",
-        type=str,
-    )
+    # parser.add_argument(
+    #     "-w",
+    #     "--path_swarm",
+    #     help="Path to save swarm plot of scores",
+    #     nargs="+",
+    #     type=str,
+    # )
 
     parser.add_argument(
         "-o",

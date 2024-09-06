@@ -124,6 +124,8 @@ class ClusterConformations:
         # Handle pre-clustering AlphaFold file information
         if path_save_alphafold:
 
+            path_save_alphafold.mkdir(exist_ok=True, parents=True)
+
             # Download and save
             afdb_path = download_utils.download_alphafold_mmcif(
                 self.unp, path_save_alphafold
@@ -152,10 +154,11 @@ class ClusterConformations:
 
                 # Parse AlphaFold structure for extracting chain info for superpose.py
                 afdb_mmcif = parsing_utils.parse_mmcif(afdb_structure, af_chain)
+
                 # Storing the start-end UniProt residue indices for protein-superpose
                 self.af_unp_range = (
-                    afdb_mmcif["unp_res_ids"][0],
-                    afdb_mmcif["unp_res_ids"][-1],
+                    min(afdb_mmcif["unp_res_ids"]),
+                    max(afdb_mmcif["unp_res_ids"]),
                 )
 
         # Number of threads for multiprocessing. Only use 1 if few unique chains
@@ -278,7 +281,7 @@ class ClusterConformations:
 
         # Dir to save the raw UniProt residue IDs as 1D np.array()s
         self.path_save_unps = path_save.joinpath("unp_residue_ids")
-        self.path_save_unps.mkdir(exist_ok=True)
+        self.path_save_unps.mkdir(exist_ok=True, parents=True)
 
         self.path_save_base_ca = path_save
 
@@ -463,6 +466,9 @@ class ClusterConformations:
         :type path_save_cluster_results: PosixPath, optional
         """
 
+        if path_save_dd_matx:
+            path_save_dd_matx.mkdir(exist_ok=True, parents=True)
+
         logger.info("Generating distance difference matrices...")
         self.score_matx, self.label_matx = self.build_clustering_inputs(
             path_save_dd_matx
@@ -517,6 +523,7 @@ class ClusterConformations:
 
         # Write out clustering results if path specified
         if path_save_cluster_results:
+            path_save_cluster_results.mkdir(exist_ok=True, parents=True)
 
             # Save clustering results
             path_save_all_conf = path_save_cluster_results.joinpath(
