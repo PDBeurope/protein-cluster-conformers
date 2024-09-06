@@ -34,7 +34,10 @@ def fetch_benchmark_mmcifs(path_benchmark_df: PosixPath, path_save: PosixPath) -
 
     # Download and save
     logger.info(
-        f"Downloading {len(pdbe_ids)} updated mmCIFs from the PDBe. This may take a few minutes..."
+        f"""
+        Downloading {len(pdbe_ids)} updated mmCIFs from the PDBe.
+        This may take a few minutes...
+        """
     )
     for pdbe in pdbe_ids:
         fetch_updated_mmcif(pdbe, path_save)
