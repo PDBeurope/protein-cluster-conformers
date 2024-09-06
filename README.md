@@ -315,7 +315,7 @@ When imported into Orc, the arguments required to execute the clustering process
 The scripts above are called by the `run_benchmark.py` wrapper. To generate conformational clustering results for the included benchmark dataset, run:
 
 ``` shell
-$ python cluster_benchmark.py
+python3 cluster_benchmark.py
 ```
 
 This will call the `run_benchmark(...)` functions included in `ca_distance.py`, `distance_difference.py`, `cluster.py`, `plot_distance_difference.py`, `plot_dendrogram.py` and `plot_swarm_plot.py`. No arguments need parsing into the script.

@@ -101,12 +101,12 @@ def benchmark_cluster(benchmark_df, unp):
     png_bool = True
     svg_bool = True
 
-    unp_cluster.make_dendrogram(
-        PATH_SAVE_CLUSTER_RESULTS.joinpath("dendrograms"), png=png_bool, svg=svg_bool
-    )
-
-    unp_cluster.make_swarmplot(
-        PATH_SAVE_CLUSTER_RESULTS.joinpath("swarm_plots"), png=png_bool, svg=svg_bool
+    cluster_monomers.render_dendrogram(
+        unp=unp,
+        path_results=PATH_SAVE_CLUSTER_RESULTS,
+        path_save=PATH_SAVE_CLUSTER_RESULTS.joinpath("dendrograms"),
+        png=png_bool,
+        svg=svg_bool,
     )
 
     """

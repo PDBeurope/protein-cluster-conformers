@@ -33,6 +33,9 @@ def fetch_benchmark_mmcifs(path_benchmark_df: PosixPath, path_save: PosixPath) -
     pdbe_ids = benchmark_df["PDBe_ID"].unique()
 
     # Download and save
+    logger.info(
+        f"Downloading {len(pdbe_ids)} updated mmCIFs from the PDBe. This may take a few minutes..."
+    )
     for pdbe in pdbe_ids:
         fetch_updated_mmcif(pdbe, path_save)
 
@@ -53,9 +56,9 @@ def fetch_updated_mmcif(pdb_code: str, path_save: PosixPath) -> None:
     download_link = url + mmcif_file_name
 
     # Download
-    logger.info("Downloading", mmcif_file_name)
-    response = get(download_link, allow_redirects=True)
     save_to = path_save.joinpath(mmcif_file_name)
+    logger.info(f"Downloading {mmcif_file_name} to {save_to}")
+    response = get(download_link, allow_redirects=True)
     open(save_to, "wb").write(response.content)
 
 
