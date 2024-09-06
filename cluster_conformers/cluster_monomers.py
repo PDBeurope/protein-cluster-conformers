@@ -151,6 +151,7 @@ class ClusterConformations:
                 af_chain = "A"
                 self.chains[af_prefix] = [af_chain]
                 self.chains_all.append(af_chain)
+                self.pdbe_chain_ids.append(f"{af_prefix}_{af_chain}")
 
                 # Parse AlphaFold structure for extracting chain info for superpose.py
                 afdb_mmcif = parsing_utils.parse_mmcif(afdb_structure, af_chain)
@@ -205,7 +206,7 @@ class ClusterConformations:
                         logger.debug(f"Removing {file}")
                         file.unlink()
 
-    def _generate_ca_matx(self, pdbe_chain_id: str) -> "tuple(dict)":
+    def _generate_ca_matx(self, pdbe_chain_id: str) -> "tuple[dict]":
         """
         Method for calculating and saving the CA distance matrix for a given PDB-chain
         ID string.

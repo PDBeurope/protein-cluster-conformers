@@ -273,7 +273,7 @@ python3 find_conformers.py -u "O34926" \
     -s benchmark_data/examples/O34926/O34926_cluster_results/ \
     -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
-    # -a benchmark_data/examples/O34926/O34926_path_alphafold/
+    -a benchmark_data/examples/O34926/O34926_path_alphafold/
 ```
 
 or use the `run_O34926.sh` script.
@@ -297,7 +297,7 @@ python3 find_conformers.py -u "P15291" \
     -s benchmark_data/examples/P15291/P15291_cluster_results/ \
     -o benchmark_data/examples/P15291/P15291_distance_difference_maps/ \
     -g benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
-    # -a benchmark_data/examples/P15291/P15291_path_alphafold/
+    -a benchmark_data/examples/P15291/P15291_path_alphafold/
 ```
 
 or execute the `run_P15291.sh` script.
