@@ -16,7 +16,7 @@ For intructions on importing `protein-cluster-conformers` into your own Python c
 cd protein-cluster-conformers
 python3.10 -m venv cluster_venv
 source cluster_venv/bin/activate
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 _____
@@ -276,10 +276,10 @@ python3 find_conformers.py -u "O34926" \
     -a benchmark_data/examples/O34926/O34926_path_alphafold/
 ```
 
-or use the `run_O34926.sh` script.
+or use the `examples/run_O34926.sh` script.
 
 ``` shell
-$ ./run_O34926.sh
+$ ./examples/run_O34926.sh
 ```
 
 **Example #2:** P15291
@@ -300,10 +300,10 @@ python3 find_conformers.py -u "P15291" \
     -a benchmark_data/examples/P15291/P15291_path_alphafold/
 ```
 
-or execute the `run_P15291.sh` script.
+or execute the `examples/run_P15291.sh` script.
 
 ```shell
-$ ./run_P15291.sh
+$ ./examples/run_P15291.sh
 ```
 
 When imported into Orc, the arguments required to execute the clustering process correctly will be parsed into the class instance and related methods as lists generated from the preceding functions called by the existing `protein-superpose` pipeline.

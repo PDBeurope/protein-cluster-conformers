@@ -23,6 +23,7 @@ python3 find_conformers.py -u "O34926" \
     -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -i 3nc6 \
+    -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
     -f \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
     -0 1 \
