@@ -1,8 +1,8 @@
 # Monomeric protein conformational state clustering
 
-These scripts can be used to cluster a parsed set of monomeric protein chains via a global conformational change metric based on CA distances. Once the peptide chains destined for clustering have been specified, a pairwise CA distance matrix for each chain is produced. Distance difference matrices are then generated, again, pairwise but between CA distance matrices here. Therefore, for `N` unique peptide chains, `N` CA distance matrices and `N^2` distance difference matrices are generated.
+These scripts can be used to cluster a parsed set of monomeric protein chains via a global conformational change metric based on CA distances. Once the polypeptide chains destined for clustering have been specified, a pairwise CA distance matrix for each chain is produced. Distance difference matrices are then generated, again, pairwise but between CA distance matrices. Therefore, for `N` unique peptide chains, `N` CA distance matrices and `N*(N-1)/1` distance difference matrices are generated. _NB: the score between A->B is the same as B->A_.
 
-Additional scripts are provided to cluster the chains based on distance-based scores calculated from all pairwise distance difference matricies, as well as scripts to produce dendrograms of the clustering results, swarm plots of the scores, and heatmaps for each distance difference matrix.
+Additional scripts are provided to cluster the chains based on distance-based scores calculated from all pairwise distance difference matricies, as well as scripts to produce dendrograms of the clustering results, and heatmaps for each distance difference matrix.
 
 Example input data is provided in the `benchmark_data/examples` folder, including scripts to download and save data from the [PDBe-KB's benchmark conformational state dataset](http://ftp.ebi.ac.uk/pub/databases/pdbe-kb/benchmarking/distinct-monomer-conformers/). Example scripts are included in `examples`, which run complete executions of the entire pipeline for a selection of structures from several difference UniProt accessions.
 
@@ -85,7 +85,7 @@ python3 find_clusters.py -u "A12345" \
 
 The paths to each structure are parsed using the `-m` flag.
 
-Chain IDs (only `struct_asym_id` is currently recognised) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
+Chain IDs (only `struct_asym_id` is currently recognised at the moment) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
 
 **Example**: O34926
 
@@ -117,8 +117,6 @@ $ python find_conformers.py -u "A12345" \
     -d /path/to/save/distance/difference/matrices/
 ```
 
-These flags are mutually exclusive, meaning either or both can be used at the same time.
-
 **Example**: O34926
 
 ```shell
@@ -142,8 +140,6 @@ $ python find_conformers.py -u "A12345" \
     -m ... \
     -o /path/to/save/distance/difference/2D/histograms/
 ```
-
-To save the histogram in the default directory (`test/ouputs/dd_histograms`), simply parse the `-o` flag without a path.
 
 The resulting plots are saved in PNG format (to save render time). E.g:
 
@@ -307,6 +303,42 @@ $ ./examples/run_P15291.sh
 ```
 
 When imported into Orc, the arguments required to execute the clustering process correctly will be parsed into the class instance and related methods as lists generated from the preceding functions called by the existing `protein-superpose` pipeline.
+
+#### Optional arguments
+
+The start and end residue positions can be parsed into the script using the `-0` and `-1` flags, respectively. This will not restrict the residue ranges during clustering but will be used to label the axes of the distance difference maps and dendrograms.
+
+*Example*: O34926:
+
+```shell
+python3 find_conformers.py -u "O34926" \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances/ \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
+    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -0 1 \
+    -1 405
+```
+
+The pipeline will avoid re-processing existing files where it files them. To update a single PDB entry, specify the PDB accession using the `-i` flag, e.g. `-i 3nc3`. To force all entries to be re-processed, use the `-f` flag, which will overwrite existing files indescriminately.
+
+*Example*: O34926:
+
+```shell
+python3 find_conformers.py -u "O34926" \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances/ \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
+    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -f
 
 ---
 
