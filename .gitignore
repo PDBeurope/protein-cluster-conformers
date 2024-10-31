@@ -106,7 +106,7 @@ celerybeat-schedule
 .venv
 env/
 venv/
-clustering_venv/
+cluster_venv/
 ENV/
 env.bak/
 venv.bak/
@@ -154,26 +154,26 @@ benchmark_data/examples/P15291/P15291_distance_differences/*
 benchmark_data/examples/P15291/P15291_distance_difference_maps/*
 benchmark_data/examples/P15291/P15291_ca_distances/*
 benchmark_data/examples/P15291/P15291_cluster_results/*
-benchmark_data/examples/P15291/P15291_alpha_fold_mmcifs/*
+benchmark_data/examples/P15291/P15291_alphafold/*
 
 !benchmark_data/examples/P15291/P15291_distance_differences/.gitkeep
 !benchmark_data/examples/P15291/P15291_distance_difference_maps/.gitkeep
 !benchmark_data/examples/P15291/P15291_ca_distances/.gitkeep
 !benchmark_data/examples/P15291/P15291_cluster_results/.gitkeep
-!benchmark_data/examples/P15291/P15291_alpha_fold_mmcifs/.gitkeep
+!benchmark_data/examples/P15291/P15291_alphafold/.gitkeep
 
 # Example outputs -- O34926
 benchmark_data/examples/O34926/O34926_distance_differences/*
 benchmark_data/examples/O34926/O34926_distance_difference_maps/*
 benchmark_data/examples/O34926/O34926_ca_distances/*
 benchmark_data/examples/O34926/O34926_cluster_results/*
-benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs/*
+benchmark_data/examples/O34926/O34926_path_alphafold/*
 
 !benchmark_data/examples/O34926/O34926_distance_differences/.gitkeep
 !benchmark_data/examples/O34926/O34926_distance_difference_maps/.gitkeep
 !benchmark_data/examples/O34926/O34926_ca_distances/.gitkeep
 !benchmark_data/examples/O34926/O34926_cluster_results/.gitkeep
-!benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs/.gitkeep
+!benchmark_data/examples/O34926/O34926_path_alphafold/.gitkeep
 
 # Outputs from unit tests
 tests/test_output/*

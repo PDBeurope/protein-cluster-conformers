@@ -182,6 +182,7 @@ def save_figure(
     :type svg: bool, optional
     """
     default_dpi = 200
+    path_save.mkdir(parents=True, exist_ok=True)
 
     if png:
         save_fig_dir = path_save.joinpath(f"{save_fname}.png")

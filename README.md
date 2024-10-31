@@ -1,8 +1,8 @@
 # Monomeric protein conformational state clustering
 
-These scripts can be used to cluster a parsed set of monomeric protein chains via a global conformational change metric based on CA distances. Once the peptide chains destined for clustering have been specified, a pairwise CA distance matrix for each chain is produced. Distance difference matrices are then generated, again, pairwise but between CA distance matrices here. Therefore, for `N` unique peptide chains, `N` CA distance matrices and `N^2` distance difference matrices are generated.
+These scripts can be used to cluster a parsed set of monomeric protein chains via a global conformational change metric based on CA distances. Once the polypeptide chains destined for clustering have been specified, a pairwise CA distance matrix for each chain is produced. Distance difference matrices are then generated, again, pairwise but between CA distance matrices. Therefore, for `N` unique peptide chains, `N` CA distance matrices and `N*(N-1)/1` distance difference matrices are generated. _NB: the score between A->B is the same as B->A_.
 
-Additional scripts are provided to cluster the chains based on distance-based scores calculated from all pairwise distance difference matricies, as well as scripts to produce dendrograms of the clustering results, swarm plots of the scores, and heatmaps for each distance difference matrix.
+Additional scripts are provided to cluster the chains based on distance-based scores calculated from all pairwise distance difference matricies, as well as scripts to produce dendrograms of the clustering results, and heatmaps for each distance difference matrix.
 
 Example input data is provided in the `benchmark_data/examples` folder, including scripts to download and save data from the [PDBe-KB's benchmark conformational state dataset](http://ftp.ebi.ac.uk/pub/databases/pdbe-kb/benchmarking/distinct-monomer-conformers/). Example scripts are included in `examples`, which run complete executions of the entire pipeline for a selection of structures from several difference UniProt accessions.
 
@@ -13,10 +13,10 @@ For intructions on importing `protein-cluster-conformers` into your own Python c
 `protein-cluster-conformers` requires >=Python3.10 to run. Initialise virtual environment and install dependencies with:
 
 ```shell
-$ cd protein-cluster-conformers]
-$ python3.10 -m venv cluster_venv
-$ source cluster_venv/bin/activate
-$ python -m pip install -r requirements.txt
+cd protein-cluster-conformers
+python3.10 -m venv cluster_venv
+source cluster_venv/bin/activate
+pip install -r requirements.txt
 ```
 
 _____
@@ -26,7 +26,7 @@ _____
 To cluster a set of protein structures, run the `find_clusters.py` script:
 
 ```shell
-$ python find_conformers.py [-h] [-v] -u UNIPROT -m MMCIF [MMCIF ...]
+python3 find_conformers.py [-h] [-v] -u UNIPROT -m MMCIF [MMCIF ...]
 							[-s PATH_CLUSTERS] -c PATH_CA [-d PATH_DD]
                           	[-g PATH_DENDROGRAM [PATH_DENDROGRAM ...]]
                           	[-w PATH_SWARM [PATH_SWARM ...]] [-o PATH_HISTOGRAM]
@@ -70,12 +70,12 @@ optional arguments:
 
 ### **Run instructions**
 
-#### Option 1) Cluster only
+#### Option 1) Cluster and save matrices
 
 To only cluster a set of monomeric protein structures that share part or all of the same UniProt sequence, run:
 
 ``` shell
-$ python find_clusters.py -u "A12345" \
+python3 find_clusters.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m /path/to/structure_2.cif [chains] \
     ... \
@@ -85,16 +85,18 @@ $ python find_clusters.py -u "A12345" \
 
 The paths to each structure are parsed using the `-m` flag.
 
-Chain IDs (only `struct_asym_id` is currently recognised) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
+Chain IDs (only `struct_asym_id` is currently recognised at the moment) should be given as space-delimited arguments after the path. Parse in multiple structures using consecutive  `-m` flags. The UniProt accession must be parsed using the `-u` flag.
 
 **Example**: O34926
 
 ```shell
-$ python find_conformers.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -s benchmark_data/examples/O34926/O34926_cluster_results/
 ```
 
@@ -102,12 +104,12 @@ By default, the pipeline only clusters the parsed mmCIFs (and specified chains),
 
 ----
 
-#### Option 2) Save matrices only
+#### Option 2) Save CA matrices only
 
 To save the matrices produced in the pipeline, simply specify the path in which to save them using the `-c` flag for CA distance matrices and the `-d` flag for CA distance difference matrices:
 
 ```shell
-$ python find_clusters.py -u "A12345" \
+$ python find_conformers.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -s /path/to/save/cluster_results.csv \
@@ -115,18 +117,15 @@ $ python find_clusters.py -u "A12345" \
     -d /path/to/save/distance/difference/matrices/
 ```
 
-These flags are mutually exclusive, meaning either or both can be used at the same time.
-
 **Example**: O34926
 
 ```shell
-$ python find_clusters.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
-    -c benchmark_data/examples/O34926_CA_distances \
-    -d benchmark_data/examples/O34926_distance_differences/
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
 ```
 
 ---
@@ -136,13 +135,11 @@ $ python find_clusters.py -u "O34926" \
 2D histograms (heatmaps) can be rendered and saved for each CA distance difference matrix by specifying the save directory using the `-o` flag:
 
 ```shell
-$ python find_clusters.py -u "A12345" \
+$ python find_conformers.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -o /path/to/save/distance/difference/2D/histograms/
 ```
-
-To save the histogram in the default directory (`test/ouputs/dd_histograms`), simply parse the `-o` flag without a path.
 
 The resulting plots are saved in PNG format (to save render time). E.g:
 
@@ -153,12 +150,14 @@ The resulting plots are saved in PNG format (to save render time). E.g:
 **Example**: O34926
 
 ```shell
-$ python find_clusters.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
 	-m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
-    -o ./benchmark_data/examples/O34926/O34926_distance_difference_maps/
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -o benchmark_data/examples/O34926/O34926_distance_difference_maps/
 ```
 
 ---
@@ -168,7 +167,7 @@ $ python find_clusters.py -u "O34926" \
 From the clustering results, a dendrogram can be rendered to show the relationships between all clustered chains. To save a dendrogram of the hierarchical clustering results, run:
 
 ```shell
-$ python find_clusters.py -u "A12345" \
+$ python find_conformers.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -g /path/to/save/dendrogram/ [png svg]
@@ -185,22 +184,24 @@ where either a `png` or `svg` file type is saved. E.g.
 **Example**: O34926
 
 ```shell
-$ python find_clusters.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
 	-m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg
 ```
 
 ---
 
-#### Option 5) Render swarm plot
+<!-- #### Option 5) Render swarm plot
 
 The scores generated between pairwise structure comparisons can be plotted as a swarm plot by parsing the `-w` flag:
 
 ```shell
-$ python find_clusters.py -u "A12345" \
+$ python find_conformers.py -u "A12345" \
     -m /path/to/structure_1.cif [chains] \
     -m ... \
     -w /path/to/save/swarm_plot/ [png svg]
@@ -215,22 +216,24 @@ Like rendering the dendrogram, the swarm plot can either be saved as `png`,  `sv
 **Example**: O34926
 
 ```shell
-$ python find_clusters.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg
 ```
 
-------
+------ -->
 
-#### Option 6) Include AlphaFold Database structure(s)
+#### Option 6) Include AlphaFold Database structure when generating CA and distance difference matrices
 
 By parsing in the `-a` flag,  the script will attempt to download and cluster the pre-generated AlphaFold structure, stored on the [AlphaFold Database](https://alphafold.ebi.ac.uk/). You do not need to have downloaded the predicted AlphaFold structure already but must be connected to the internet. The structure will be saved
 
 ```shell
-$ python find_clusters.py -u "A12345" \
+$ python find_conformers.py -u "A12345" \
 		-m /path/to/structure_1.cif [chains] \
     -m ... \
     -a
@@ -239,12 +242,14 @@ $ python find_clusters.py -u "A12345" \
 **Example**: O34926
 
 ```shell
-$ python find_clusters.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
-    -a
+    -c benchmark_data/examples/O34926/O34926_ca_distances \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -a benchmark_data/examples/O34926/O34926_path_alphafold/
 ```
 
 ------
@@ -254,7 +259,7 @@ $ python find_clusters.py -u "O34926" \
 **Example #1:** O34926
 
 ```shell
-$ python find_conformers.py -u "O34926" \
+python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
@@ -263,14 +268,14 @@ $ python find_conformers.py -u "O34926" \
     -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -s benchmark_data/examples/O34926/O34926_cluster_results/ \
     -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
-    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg
-    -a
+    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -a benchmark_data/examples/O34926/O34926_path_alphafold/
 ```
 
-or use the `run_O34926.sh` script.
+or use the `examples/run_O34926.sh` script.
 
 ``` shell
-$ ./run_O34926.sh
+$ ./examples/run_O34926.sh
 ```
 
 **Example #2:** P15291
@@ -287,18 +292,54 @@ python3 find_conformers.py -u "P15291" \
     -d benchmark_data/examples/P15291/P15291_distance_differences/ \
     -s benchmark_data/examples/P15291/P15291_cluster_results/ \
     -o benchmark_data/examples/P15291/P15291_distance_difference_maps/ \
-    -g benchmark_data/examples/P15291/P15291_cluster_results/ png svg
-    -w benchmark_data/examples/P15291/P15291_cluster_results/ png svg
-    -a
+    -g benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
+    -a benchmark_data/examples/P15291/P15291_path_alphafold/
 ```
 
-or execute the `run_P15291.sh` script.
+or execute the `examples/run_P15291.sh` script.
 
 ```shell
-$ ./run_P15291.sh
+$ ./examples/run_P15291.sh
 ```
 
 When imported into Orc, the arguments required to execute the clustering process correctly will be parsed into the class instance and related methods as lists generated from the preceding functions called by the existing `protein-superpose` pipeline.
+
+#### Optional arguments
+
+The start and end residue positions can be parsed into the script using the `-0` and `-1` flags, respectively. This will not restrict the residue ranges during clustering but will be used to label the axes of the distance difference maps and dendrograms.
+
+*Example*: O34926:
+
+```shell
+python3 find_conformers.py -u "O34926" \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances/ \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
+    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -0 1 \
+    -1 405
+```
+
+The pipeline will avoid re-processing existing files where it files them. To update a single PDB entry, specify the PDB accession using the `-i` flag, e.g. `-i 3nc3`. To force all entries to be re-processed, use the `-f` flag, which will overwrite existing files indescriminately.
+
+*Example*: O34926:
+
+```shell
+python3 find_conformers.py -u "O34926" \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc3_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc5_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc6_updated.cif A B \
+    -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
+    -c benchmark_data/examples/O34926/O34926_ca_distances/ \
+    -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
+    -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    -f
+```
 
 ---
 
@@ -307,7 +348,7 @@ When imported into Orc, the arguments required to execute the clustering process
 The scripts above are called by the `run_benchmark.py` wrapper. To generate conformational clustering results for the included benchmark dataset, run:
 
 ``` shell
-$ python cluster_benchmark.py
+python3 cluster_benchmark.py
 ```
 
 This will call the `run_benchmark(...)` functions included in `ca_distance.py`, `distance_difference.py`, `cluster.py`, `plot_distance_difference.py`, `plot_dendrogram.py` and `plot_swarm_plot.py`. No arguments need parsing into the script.
