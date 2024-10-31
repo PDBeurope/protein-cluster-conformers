@@ -10,12 +10,8 @@ Functions included herein to generate a swarm plots from a given dir of pre-gene
 distance difference maps.
 """
 
-# Standard package imports
-from typing import Iterable
-
-import seaborn as sns
-
 # Third-party modules
+import seaborn as sns
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from numpy import column_stack, ndarray, zeros
@@ -168,15 +164,15 @@ def plot_dendrogram(
     del dendrogram_plot
 
 
-def plot_swarmplot(scores: Iterable, axis) -> "tuple[Figure, Axes]":
+def plot_swarmplot(scores: ndarray, axis) -> "tuple[Figure, Axes]":
     """Creates a swarm plot of non-overlapping data points for a given list of data. The
     values of the data will correspond to their y-values. Their position along the
     x-axis is irrelevant as they're all identical.
 
-    :param y_data: Array of data points to plot.
-    :type y_data: Iterable
-    :param unp: UniProt accession.
-    :type unp: str
+    :param scores: Matrix of GLOCON scores.
+    :type scores: Iterable
+    :param axis: Matplotlib axis to plot the swarm plot on.
+    :type axis: Axes
     :return: Figure and axis objects containing the plotted swarm plot
     :rtype: tuple(matplotlib.figure.Figure, matplotlib.axes.Axes)
     """
