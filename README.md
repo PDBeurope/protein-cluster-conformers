@@ -339,6 +339,7 @@ python3 find_conformers.py -u "O34926" \
     -s benchmark_data/examples/O34926/O34926_cluster_results/ \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
     -f
+```
 
 ---
 

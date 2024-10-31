@@ -714,39 +714,108 @@ def render_dendrogram(
         )
         return
 
-    if not np.array_equal(linkage_matx, np.array([0])):
+    if np.array_equal(linkage_matx, np.array([0])):
+        logger.info("Single cluster for segment. Not rendering dendrogram.")
+        return
 
-        fig, ax = plt.subplots(1, 1)
+    fig, ax = plt.subplots(1, 1)
 
-        logger.info("Rendering dendogram")
-        cluster_chains.plot_dendrogram(
-            unp,
-            ax,
-            linkage_matx,
-            CLUSTERING_CUTOFF_PC,
-            labels=pdbe_chain_ids,
-            leaf_rotation=90,
-        )  # p=3
+    logger.info("Rendering dendogram")
+    cluster_chains.plot_dendrogram(
+        unp,
+        ax,
+        linkage_matx,
+        CLUSTERING_CUTOFF_PC,
+        labels=pdbe_chain_ids,
+        leaf_rotation=90,
+    )  # p=3
 
-        # UniProt residue range specified, make modifications (optional)
-        if unp_range:
-            ax.set_title(
-                f"Agglomerative clustering results: {unp} ({unp_range[0]}-{unp_range[1]})",
-                fontweight="bold",
-            )
-            fname = f"{unp}_{unp_range[0]}_{unp_range[1]}_agglomerative_dendrogram"
-        else:
-            fname = f"{unp}_agglomerative_dendrogram"
+    # UniProt residue range specified, make modifications (optional)
+    if unp_range:
+        ax.set_title(
+            f"Agglomerative clustering results: {unp} ({unp_range[0]}-{unp_range[1]})",
+            fontweight="bold",
+        )
+        fname = f"{unp}_{unp_range[0]}_{unp_range[1]}_agglomerative_dendrogram"
+    else:
+        fname = f"{unp}_agglomerative_dendrogram"
 
-        # Save file
-        io_utils.save_figure(
-            path_save,
-            save_fname=fname,
-            png=png,
-            svg=svg,
+    # Save file
+    io_utils.save_figure(
+        path_save,
+        save_fname=fname,
+        png=png,
+        svg=svg,
+    )
+
+    # plt.close(fig=fig)
+
+
+def render_swarmplot(
+    unp: str,
+    path_results: PosixPath,
+    path_save: PosixPath = None,
+    png: bool = False,
+    svg: bool = False,
+    unp_range: "tuple[int, int]" = None,
+) -> None:
+    """
+    Plot hierachical dendrogram from clustering results. Must have a linkage matrix and
+    ordered labels object already stored. The easiest way to get these is to run the
+    ClusterConformations() object first and point to its output folder.
+
+    :param path_save: Path to save rendered dendrogram image.
+    :type path_save: PosixPath
+    :param png: Save dendrogram image in PNG format, defaults to False
+    :type png: bool, optional
+    :param svg: Save dendrogram image in SVG format, defaults to False
+    :type svg: bool, optional
+    :param unp_range: Range of UniProt residues used for clustering
+    """
+
+    # Set matplotlib global formatting
+    appearance_utils.init_plot_appearance()
+
+    try:
+        score_matx = io_utils.load_matrix(
+            path_results.joinpath(f"{unp}_score_matrix.npz")
         )
 
-        plt.close(fig=fig)
+    except OSError:
+        logger.error(
+            "Linkage matrix and/or label list not found. Please run clustering first."
+        )
+        return
 
+    if np.array_equal(score_matx, np.array([0])):
+        logger.info("Single cluster for segment. Not rendering swarm plot.")
+        return
+
+    fig, ax = plt.subplots(1, 1)
+
+    logger.info("Rendering swarm plot")
+    cluster_chains.plot_swarmplot(
+        score_matx,
+        ax,
+    )
+
+    # UniProt residue range specified, make modifications (optional)
+    if unp_range:
+        ax.set_title(
+            f"GLOCON score for clustering: {unp} ({unp_range[0]}-{unp_range[1]})",
+            fontweight="bold",
+        )
+        fname = f"{unp}_{unp_range[0]}_{unp_range[1]}_swarm_plot"
     else:
-        logger.info("Single cluster for segment. Not rendering dendrogram.")
+        fname = f"{unp}_swarm_plot"
+
+    # Save file
+
+    io_utils.save_figure(
+        path_save,
+        save_fname=fname,
+        png=png,
+        svg=svg,
+    )
+
+    plt.close(fig=fig)

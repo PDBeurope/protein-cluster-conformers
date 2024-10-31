@@ -133,13 +133,14 @@ def create_parser(input_args=None):
         type=str,
     )
 
-    # parser.add_argument(
-    #     "-w",
-    #     "--path_swarm",
-    #     help="Path to save swarm plot of scores",
-    #     nargs="+",
-    #     type=str,
-    # )
+    parser.add_argument(
+        "-w",
+        "--path_swarm",
+        help="Path to save swarm plot of scores",
+        nargs="+",
+        type=str,
+        default=None,
+    )
 
     parser.add_argument(
         "-o",
@@ -263,21 +264,35 @@ def main():
             force=True,
         )
 
+    # Define residue range if parsed in
+    if args.first_residue_position and args.last_residue_position:
+        this_unp_range = (args.first_residue_position, args.last_residue_position)
+    else:
+        this_unp_range = None
+
     # Parsing in options for saving dendrogram
     if args.path_dendrogram:
 
         path_save, png_bool, svg_bool = extract_image_format(args.path_dendrogram)
 
-        # Define residue range if parsed in
-        if args.first_residue_position and args.last_residue_position:
-            this_unp_range = (args.first_residue_position, args.last_residue_position)
-        else:
-            this_unp_range = None
-
         cluster_monomers.render_dendrogram(
             unp=args.uniprot,
             path_results=path_save,
             path_save=path_save,
+            png=png_bool,
+            svg=svg_bool,
+            unp_range=this_unp_range,
+        )
+
+    if args.path_swarm:
+
+        path_save, png_bool, svg_bool = extract_image_format(args.path_swarm)
+
+        # Render and save swarm plot of scores
+        cluster_monomers.render_swarmplot(
+            unp=args.uniprot,
+            path_save=path_save,
+            path_results=args.path_clusters,
             png=png_bool,
             svg=svg_bool,
             unp_range=this_unp_range,

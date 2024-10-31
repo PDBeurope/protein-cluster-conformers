@@ -16,12 +16,13 @@ from typing import Iterable
 import seaborn as sns
 
 # Third-party modules
-from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from numpy import column_stack, ndarray, zeros
 from scipy.cluster.hierarchy import dendrogram
 from sklearn.cluster import AgglomerativeClustering
+
+from cluster_conformers.utils.linear_algebra_utils import upper_triangle
 
 
 def make_linkage_matx(model: AgglomerativeClustering) -> "ndarray[any, float]":
@@ -103,7 +104,7 @@ def cluster_agglomerative(
 
 def plot_dendrogram(
     unp: str, axis, linkage_matrix: ndarray = None, cutoff: float = None, **kwargs
-) -> "tuple(Figure, Axes)":
+) -> "tuple[Figure, Axes]":
     """
     Create linkage matrix from SKLearn model and plot the dendrogram of nodes. Applies
     this to parsed Matplotlib axis, inplace.
@@ -167,8 +168,8 @@ def plot_dendrogram(
     del dendrogram_plot
 
 
-def plot_swarmplot(y_data: Iterable, unp: str) -> "tuple(Figure, Axes)":
-    """Creates a strip plot of non-overlapping data points for a given list of data. The
+def plot_swarmplot(scores: Iterable, axis) -> "tuple[Figure, Axes]":
+    """Creates a swarm plot of non-overlapping data points for a given list of data. The
     values of the data will correspond to their y-values. Their position along the
     x-axis is irrelevant as they're all identical.
 
@@ -179,19 +180,8 @@ def plot_swarmplot(y_data: Iterable, unp: str) -> "tuple(Figure, Axes)":
     :return: Figure and axis objects containing the plotted swarm plot
     :rtype: tuple(matplotlib.figure.Figure, matplotlib.axes.Axes)
     """
-    # Init the figure
-    _, ax = plt.subplots(
-        1,
-        1,
-        figsize=(4, 5),
-        # ncols=1,    # INTRA | bar | INTER | bar
-        # nrows=1,
-        # gridspec_kw=dict(width_ratios=[4, 0.2, 4, 0.2]),
-        tight_layout=True,
-    )
     # Plot the data
-    sns.swarmplot(data=y_data, ax=ax, size=5)  # vmax=max_dist ,
+    sns.swarmplot(data=upper_triangle(scores), ax=axis, size=5)  # vmax=max_dist ,
 
     # Add some formatting
-    ax.set_title(unp, fontweight="bold")
-    ax.set_ylabel("Score (\u212B)")
+    axis.set_ylabel("GLOCON score (\u212B)")

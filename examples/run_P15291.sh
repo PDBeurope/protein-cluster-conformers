@@ -28,8 +28,7 @@ python3 find_conformers.py -u "P15291" \
     -g benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
     -f \
     -0 122 \
-    -1 398
+    -1 398 \
+    # -w benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
     # -a benchmark_data/examples/P15291/P15291_alpha_fold_mmcifs \
-
-# -o benchmark_data/examples/P15291/P15291_distance_difference_maps/ \
-# -w benchmark_data/examples/P15291/P15291_cluster_results/ png svg \
+    # -v \

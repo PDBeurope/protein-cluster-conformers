@@ -27,9 +27,7 @@ python3 find_conformers.py -u "O34926" \
     -f \
     -g benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
     -0 1 \
-    -1 405
+    -1 405 \
+    # -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
+    # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs \
     # -v \
-    # -a benchmark_data/examples/O34926/O34926_alpha_fold_mmcifs
-
-# -o benchmark_data/examples/O34926/O34926_distance_difference_maps/ \
-# -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg \
