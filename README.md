@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 _____
 
-## CLI: Clustering structures
+## Run instructions: CLI
 
 To cluster a set of protein structures, run the `find_clusters.py` script:
 
@@ -378,11 +378,10 @@ docker run \
     -v /path/to/your/output:/data/output \
     -v /path/to/your/updated_mmcifs:/data/updated_mmcifs \
     protein-cluster-conformers \
-    -u O34926 \
+    -u <uniprot_accession> \
     -m /data/updated_mmcifs/3nc3_updated.cif A B \
     -m /data/updated_mmcifs/3nc5_updated.cif A B \
-    -m /data/updated_mmcifs/3nc6_updated.cif A B \
-    -m /data/updated_mmcifs/3nc7_updated.cif A B
+    ...
 ```
 
 For example:
