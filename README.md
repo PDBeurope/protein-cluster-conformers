@@ -68,7 +68,7 @@ optional arguments:
 
 ---
 
-### **Run instructions**
+### **Run instructions: CLI**
 
 #### Option 1) Cluster and save matrices
 
@@ -356,6 +356,54 @@ This will call the `run_benchmark(...)` functions included in `ca_distance.py`, 
 Results will be saved in the `./benchmark_data/` folder.
 
 ------
+
+## Run Instructions: Docker
+
+This is the recommended option for most users who need to run the CLI application. Make sure you have Docker installed on your machine, then build the image:
+
+### Build the Docker image
+
+```shell
+docker build -t protein-cluster-conformers .
+```
+
+## Run the Docker container
+
+When running the container, all output files are saved in the `/data/output` directory. To ensure the output files are saved to your machine, mount a local directory to the container using the `-v` flag, like in the example below. Specify input chains using the `-m` (and the `-u` flag for the UniProt accession) as detailed in the CLI section above, after the image name (`protein-cluster-conformers` in this case). The `-c`, `-d` and `-s` arguments are predefined in the Docker file, but are set sub-directories in the now-mounted `/data/output` directory.
+
+Input mmCIFs should be specified as paths in the Docker container, not the local directory. Input mmCIFs can be copied to the container at time of Docker build, or the `/data/updated_mmcifs` directory can be mounted to a local directory containing the input mmCIFs for more flexibility. 
+
+```shell
+docker run \
+    -v /path/to/your/output:/data/output \
+    -v /path/to/your/updated_mmcifs:/data/updated_mmcifs \
+    protein-cluster-conformers \
+    -u O34926 \
+    -m /data/updated_mmcifs/3nc3_updated.cif A B \
+    -m /data/updated_mmcifs/3nc5_updated.cif A B \
+    -m /data/updated_mmcifs/3nc6_updated.cif A B \
+    -m /data/updated_mmcifs/3nc7_updated.cif A B
+```
+
+For example:
+
+```shell
+mkdir output
+
+docker run \
+    -v ./output:/data/output \
+    -v ./benchmark_data/examples/O34926/O34926_updated_mmcif/:/data/updated_mmcifs \
+    protein-cluster-conformers \
+    -u O34926 \
+    -m /data/updated_mmcifs/3nc3_updated.cif A B \
+    -m /data/updated_mmcifs/3nc5_updated.cif A B \
+    -m /data/updated_mmcifs/3nc6_updated.cif A B \
+    -m /data/updated_mmcifs/3nc7_updated.cif A B
+```
+
+Inside the Docker container, the application scripts are saved to `/app` and data is saved to `/data` in the container's root. 
+
+The additional optional flags from the CLI instructions above can be parsed in after the image name. 
 
 ## Contributing
 
