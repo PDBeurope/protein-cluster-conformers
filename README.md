@@ -8,6 +8,10 @@ Example input data is provided in the `benchmark_data/examples` folder, includin
 
 For intructions on importing `protein-cluster-conformers` into your own Python code, refer to `/tutorials/instructions.ipynb`.
 
+_____
+
+## Run instructions: CLI
+
 **Dependencies**:
 
 `protein-cluster-conformers` requires >=Python3.10 to run. Initialise virtual environment and install dependencies with:
@@ -18,10 +22,6 @@ python3.10 -m venv cluster_venv
 source cluster_venv/bin/activate
 pip install -r requirements.txt
 ```
-
-_____
-
-## Run instructions: CLI
 
 To cluster a set of protein structures, run the `find_clusters.py` script:
 
