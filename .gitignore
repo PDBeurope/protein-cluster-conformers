@@ -129,6 +129,9 @@ pyenv3.10/
 dmypy.json
 .envrc
 
+# Docker
+output/
+
 # All benchmark results
 benchmark_data/all_uniprots/clustering_results/swarm_plots/*
 benchmark_data/all_uniprots/clustering_results/dendrograms/*

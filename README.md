@@ -8,6 +8,10 @@ Example input data is provided in the `benchmark_data/examples` folder, includin
 
 For intructions on importing `protein-cluster-conformers` into your own Python code, refer to `/tutorials/instructions.ipynb`.
 
+_____
+
+## Run instructions: CLI
+
 **Dependencies**:
 
 `protein-cluster-conformers` requires >=Python3.10 to run. Initialise virtual environment and install dependencies with:
@@ -18,10 +22,6 @@ python3.10 -m venv cluster_venv
 source cluster_venv/bin/activate
 pip install -r requirements.txt
 ```
-
-_____
-
-## CLI: Clustering structures
 
 To cluster a set of protein structures, run the `find_clusters.py` script:
 
@@ -68,7 +68,7 @@ optional arguments:
 
 ---
 
-### **Run instructions**
+### **Run instructions: CLI**
 
 #### Option 1) Cluster and save matrices
 
@@ -130,7 +130,7 @@ python3 find_conformers.py -u "O34926" \
 
 ---
 
-#### Option 3) Render distance difference maps only
+#### Option 3) Render all distance difference maps
 
 2D histograms (heatmaps) can be rendered and saved for each CA distance difference matrix by specifying the save directory using the `-o` flag:
 
@@ -159,6 +159,8 @@ python3 find_conformers.py -u "O34926" \
     -d benchmark_data/examples/O34926/O34926_distance_differences/ \
     -o benchmark_data/examples/O34926/O34926_distance_difference_maps/
 ```
+
+**CAUTION**: This can be slow for large datasets.
 
 ---
 
@@ -196,7 +198,7 @@ python3 find_conformers.py -u "O34926" \
 
 ---
 
-<!-- #### Option 5) Render swarm plot
+#### Option 5) Render swarm plot
 
 The scores generated between pairwise structure comparisons can be plotted as a swarm plot by parsing the `-w` flag:
 
@@ -223,10 +225,11 @@ python3 find_conformers.py -u "O34926" \
     -m benchmark_data/examples/O34926/O34926_updated_mmcif/3nc7_updated.cif A B \
     -c benchmark_data/examples/O34926/O34926_ca_distances \
     -d benchmark_data/examples/O34926/O34926_distance_differences/ \
+    -s benchmark_data/examples/O34926/O34926_cluster_results/ \
     -w benchmark_data/examples/O34926/O34926_cluster_results/ png svg
 ```
 
------- -->
+------
 
 #### Option 6) Include AlphaFold Database structure when generating CA and distance difference matrices
 
@@ -356,6 +359,71 @@ This will call the `run_benchmark(...)` functions included in `ca_distance.py`, 
 Results will be saved in the `./benchmark_data/` folder.
 
 ------
+
+## Run Instructions: Docker
+
+This is the recommended option for most users who need to run the CLI application. Make sure you have Docker installed on your machine, then build the image:
+
+### Build the Docker image
+
+```shell
+docker build -t protein-cluster-conformers .
+```
+
+### Run the Docker container
+
+When running the container, all output files are saved in the `/data/output` directory. To ensure the output files are saved to your machine, mount a local directory to the container using the `-v` flag, like in the example below. Specify input chains using the `-m` (and the `-u` flag for the UniProt accession) as detailed in the CLI section above, after the image name (`protein-cluster-conformers` in this case). The `-c`, `-d` and `-s` arguments are predefined in the Docker file, but are set sub-directories in the now-mounted `/data/output` directory.
+
+Input mmCIFs should be specified as paths in the Docker container, not the local directory. Input mmCIFs can be copied to the container at time of Docker build, or the `/data/updated_mmcifs` directory can be mounted to a local directory containing the input mmCIFs for more flexibility.
+
+```shell
+docker run \
+    -v /path/to/your/output:/data/output \
+    -v /path/to/your/updated_mmcifs:/data/updated_mmcifs \
+    protein-cluster-conformers \
+    -u <uniprot_accession> \
+    -m /data/updated_mmcifs/3nc3_updated.cif A B \
+    -m /data/updated_mmcifs/3nc5_updated.cif A B \
+    ...
+```
+
+For example:
+
+```shell
+mkdir output
+
+docker run \
+    -v ./output:/data/output \
+    -v ./benchmark_data/examples/O34926/O34926_updated_mmcif/:/data/updated_mmcifs \
+    protein-cluster-conformers \
+    -u O34926 \
+    -m /data/updated_mmcifs/3nc3_updated.cif A B \
+    -m /data/updated_mmcifs/3nc5_updated.cif A B \
+    -m /data/updated_mmcifs/3nc6_updated.cif A B \
+    -m /data/updated_mmcifs/3nc7_updated.cif A B
+```
+
+Inside the Docker container, the application scripts are saved to `/app` and data is saved to `/data` in the container's root.
+
+The additional optional flags from the CLI instructions above can be parsed in after the image name.
+
+## Run Instructions: Python API
+
+To import the package into your own Python code, refer to `/tutorials/instructions.ipynb` for a step-by-step guide on how to use the package.
+
+The package is pip-installable, and can be imported into your own Python code using:
+
+```shell
+pip install protein-cluster-conformers
+```
+
+Then import the package into your Python code:
+
+```python
+from cluster_conformers import ClusterConformers
+
+...
+```
 
 ## Contributing
 
