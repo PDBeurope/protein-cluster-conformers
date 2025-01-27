@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started &mdash; protein-cluster-conformers 1.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/styles.css" />
 
@@ -213,13 +213,13 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <p>Once installed, import the package into your code with:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cluster_conformers</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cluster_conformers</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">cluster_conformers</span></code> contains many useful tools to help you with downloading,
 clustering and analysing your results. The most important object for clustering can be
 imported via:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cluster_conformers.cluster_monomers</span> <span class="kn">import</span> <span class="n">ClusterConformations</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cluster_conformers.cluster_monomers</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClusterConformations</span>
 </pre></div>
 </div>
 <p>Initialise an instance of the object with the paths to your PDB files. They should be
@@ -258,7 +258,7 @@ worked example.</p>
 <section id="visualising-results">
 <h2>Visualising Results<a class="headerlink" href="#visualising-results" title="Link to this heading"></a></h2>
 <p>The cluster results can be visualised in dendrogram form with:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cluster_conformers.cluster_monomers</span> <span class="kn">import</span> <span class="n">render_dendrogram</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cluster_conformers.cluster_monomers</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_dendrogram</span>
 
 <span class="c1"># Render dendrogram</span>
 <span class="n">render_dendrogram</span><span class="p">(</span>
@@ -274,7 +274,7 @@ worked example.</p>
 </div>
 <p>You can also view the chain-chain comparisons made by the distance difference matrices
 by generating heatmaps of the Angstrom differences with:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cluster_conformers.distance_differences</span> <span class="kn">import</span> <span class="n">make_dd_maps</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cluster_conformers.distance_differences</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_dd_maps</span>
 
 <span class="n">make_dd_maps</span><span class="p">(</span>
     <span class="c1"># Should be same as used in ClusterConformations.cluster()</span>
