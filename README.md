@@ -374,7 +374,7 @@ docker build -t protein-cluster-conformers .
 
 When running the container, all output files are saved in the `/data/output` directory. To ensure the output files are saved to your machine, mount a local directory to the container using the `-v` flag, like in the example below. Specify input chains using the `-m` (and the `-u` flag for the UniProt accession) as detailed in the CLI section above, after the image name (`protein-cluster-conformers` in this case). The `-c`, `-d` and `-s` arguments are predefined in the Docker file, but are set sub-directories in the now-mounted `/data/output` directory.
 
-Input mmCIFs should be specified as paths in the Docker container, not the local directory. Input mmCIFs can be copied to the container at time of Docker build, or the `/data/updated_mmcifs` directory can be mounted to a local directory containing the input mmCIFs for more flexibility. 
+Input mmCIFs should be specified as paths in the Docker container, not the local directory. Input mmCIFs can be copied to the container at time of Docker build, or the `/data/updated_mmcifs` directory can be mounted to a local directory containing the input mmCIFs for more flexibility.
 
 ```shell
 docker run \
@@ -403,9 +403,9 @@ docker run \
     -m /data/updated_mmcifs/3nc7_updated.cif A B
 ```
 
-Inside the Docker container, the application scripts are saved to `/app` and data is saved to `/data` in the container's root. 
+Inside the Docker container, the application scripts are saved to `/app` and data is saved to `/data` in the container's root.
 
-The additional optional flags from the CLI instructions above can be parsed in after the image name. 
+The additional optional flags from the CLI instructions above can be parsed in after the image name.
 
 ## Run Instructions: Python API
 
@@ -421,6 +421,7 @@ Then import the package into your Python code:
 
 ```python
 from cluster_conformers import ClusterConformers
+
 ...
 ```
 
