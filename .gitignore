@@ -196,5 +196,10 @@ tests/test_output/figures/*
 !tests/test_output/renaming/.gitkeep
 !tests/test_output/figures/.gitkeep
 
+# Outputs from tutorial
+tutorials/ca_distance_matrices/*
+tutorials/cluster_results/*
+tutorials/distance_difference_matrices/*
+tutorials/updated_mmcifs/*
 
 TODO
