@@ -52,7 +52,7 @@ class ClusterConformations:
     def __init__(
         self,
         unp: str,
-        mmcifs_and_chains: "dict[str, list[str] ]",
+        mmcifs_and_chains: dict[str, list[str] ],
         path_save_alphafold: PosixPath = None,
         nproc: int = 10,  # max 10 chosen based on benchmarking results
         force: bool = False,
@@ -180,7 +180,7 @@ class ClusterConformations:
         self.pdbe_chain_ids = np.asarray(self.pdbe_chain_ids)
 
     def remove_entry_matxs(
-        self, pdb_ids: "set[str]", path_ca: PosixPath, path_dd: PosixPath
+        self, pdb_ids: set[str], path_ca: PosixPath, path_dd: PosixPath
     ):
         """
         Function to remove all CA and distance difference matrices for a given set of
@@ -206,7 +206,7 @@ class ClusterConformations:
                         logger.debug(f"Removing {file}")
                         file.unlink()
 
-    def _generate_ca_matx(self, pdbe_chain_id: str) -> "tuple[dict]":
+    def _generate_ca_matx(self, pdbe_chain_id: str) -> tuple[dict]:
         """
         Method for calculating and saving the CA distance matrix for a given PDB-chain
         ID string.
@@ -301,15 +301,16 @@ class ClusterConformations:
             pool.close()  # Marks the pool as closed.
             pool.join()  # Waits for workers to exit.
 
-    def _dd_matx_to_score(self, label: str) -> "dict[str: float]":
+    def _dd_matx_to_score(self, label: str) -> dict[str: float]:
         """
         Function to either generate de novo or retrieve existing distance-difference
         matrix, calculate its score and then return the result as a key-value paired
         dictionary. The value is the score and the key is a unique label attributed to
         the two chains contributing to the distance difference matrix.
 
-        :return: _description_
-        :rtype: _type_
+        :return: Dictionary of the score for the distance difference matrix 
+            corresponding to the label.
+        :rtype: dict[str: float]
         """
 
         label_list = label.split("_")
@@ -323,7 +324,7 @@ class ClusterConformations:
         key = f"{label_list[1]}_{label_list[2]}_{label_list[3]}_{label_list[4]}_{label_list[5]}"
         dd_matx_file = self.path_save_base_dd.joinpath(f"{self.unp}_{key}")
 
-        # Note: "dd_matx" = "distance difference matrix"
+        # NOTE: "dd_matx" = "distance difference matrix"
         if not dd_matx_file.with_suffix(".npz").exists() or self.force:
 
             dd_matx = distance_differences.generate_matx_diff(
@@ -337,7 +338,6 @@ class ClusterConformations:
             )
 
         else:
-            # TODO: This needs checking to see if it'll work
             dd_matx = io_utils.load_matrix(dd_matx_file.with_suffix(".npz"))
             logger.debug(
                 f"Loaded distance difference matrix for {key} from existing file: "
@@ -680,7 +680,7 @@ def render_dendrogram(
     path_save: PosixPath = None,
     png: bool = False,
     svg: bool = False,
-    unp_range: "tuple[int, int]" = None,
+    unp_range: tuple[int, int] = None,
 ) -> None:
     """
     Plot hierachical dendrogram from clustering results. Must have a linkage matrix and
@@ -718,7 +718,7 @@ def render_dendrogram(
         logger.info("Single cluster for segment. Not rendering dendrogram.")
         return
 
-    fig, ax = plt.subplots(1, 1)
+    _, ax = plt.subplots(1, 1)
 
     logger.info("Rendering dendogram")
     cluster_chains.plot_dendrogram(
@@ -757,7 +757,7 @@ def render_swarmplot(
     path_save: PosixPath = None,
     png: bool = False,
     svg: bool = False,
-    unp_range: "tuple[int, int]" = None,
+    unp_range: tuple[int, int] = None,
 ) -> None:
     """
     Plot hierachical dendrogram from clustering results. Must have a linkage matrix and
