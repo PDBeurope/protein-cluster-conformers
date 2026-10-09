@@ -39,7 +39,7 @@ def load_mmcif(path: PosixPath) -> cif.Block:
         raise ValueError
 
 
-def save_matrix(matrix: ndarray, path: "PosixPath|str", label: str = None) -> None:
+def save_matrix(matrix: ndarray, path: PosixPath | str, label: str = None) -> None:
     """
     Saves a matrix in a compressed but non-numerically transformed format. Should be
     used to save matrices that contain mix data type elements, are non-symmetric, not
@@ -62,7 +62,7 @@ def save_matrix(matrix: ndarray, path: "PosixPath|str", label: str = None) -> No
 
 
 def save_compressed_matrix(
-    matrix: ndarray, path: "PosixPath|str", label: str = None
+    matrix: ndarray, path: PosixPath | str, label: str = None
 ) -> None:
     """
     Parse matrix and path to save it. Saves matrix as .npz file. Compression techniques
@@ -94,7 +94,7 @@ def save_compressed_matrix(
 
 
 def save_string_based_matx(
-    matrix: ndarray, path: "PosixPath|str", label: str = None
+    matrix: ndarray, path: PosixPath | str, label: str = None
 ) -> None:
     """
     Saves a string-containing matrix in an uncompressed format.
@@ -113,7 +113,7 @@ def save_string_based_matx(
         logger.error(f"Could not save matrix: {label}", exc_info=True)
 
 
-def load_matrix(path: "PosixPath|str") -> ndarray:
+def load_matrix(path: PosixPath | str) -> ndarray:
     """
     Loads matrix (numpy array) into variable.
 
@@ -130,7 +130,7 @@ def load_matrix(path: "PosixPath|str") -> ndarray:
     return matx
 
 
-def get_fnames(path: "PosixPath|str") -> "list[str]":
+def get_fnames(path: PosixPath | str) -> list[str]:
     """
     Given a path to a dir containing files, returns a list of file names in the dir
     (including the path to their location prefixed) as strings.
@@ -230,7 +230,7 @@ def serial_load(path_fname: PosixPath):
     return object
 
 
-def load_matrix_from_tri_upper(path: "PosixPath|str") -> ndarray:
+def load_matrix_from_tri_upper(path: PosixPath | str) -> ndarray:
     """
     Function for loading compressed, symmetric matrices in which only the upper half was
     saved.
