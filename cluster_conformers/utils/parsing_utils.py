@@ -5,6 +5,7 @@ Gemmi objects.
 
 # Third party imports
 from logging import getLogger
+from typing import TypedDict
 
 from gemmi import cif
 from numpy import NaN
@@ -12,7 +13,14 @@ from numpy import NaN
 logger = getLogger(__name__)
 
 
-def extract_table(mmcif: cif.Block, search_list: "list[str]") -> cif.Table:
+class StructureCoords(TypedDict):
+    cartn_x: list[float]
+    cartn_y: list[float]
+    cartn_z: list[float]
+    unp_res_ids: set[int]
+
+
+def extract_table(mmcif: cif.Block, search_list: list[str]) -> cif.Table:
     """
     Produces a Gemmi table based on a list of parsed column names in the _atom_site.
     loop.
@@ -37,8 +45,8 @@ def extract_table(mmcif: cif.Block, search_list: "list[str]") -> cif.Table:
 
 
 def fill_missing_unps(
-    structure_coords: "dict[str, list[str|float]]",
-) -> "dict[str, list[str|float]]":
+    structure_coords: StructureCoords,
+) -> StructureCoords:
     """
     Given a list of unique UniProt indices and separate lists of 3D Cartesian coords,
     the function inserts NaN values into each coordinate list where a gap in the UniProt
@@ -47,10 +55,12 @@ def fill_missing_unps(
     highest UniProt index.
 
     :param structure_coords: (x, y, z) coordinates and UniProt residue indices.
-    :type structure_coords: dict[float, str]
+        Expected keys are "cartn_x", "cartn_y", "cartn_z" (lists of floats) and
+        "unp_res_ids" (a set of integers).
+    :type structure_coords: StructureCoords
     :return: Same (x, y, z) coordinates and UniProt residue indices as input, with any
         missing coordinates filled as np.NaN
-    :rtype: dict[float, str]
+    :rtype: StructureCoords
     """
     # Insert NaN values into Cartesian coordinates where UniProt index is missing
     complete_res_ids = set(range(1, max(structure_coords["unp_res_ids"]) + 1))
@@ -73,7 +83,7 @@ def fill_missing_unps(
     return structure_coords
 
 
-def parse_mmcif(mmcif: cif.Block, chain_id: str) -> "dict[str, list[str|float]]":
+def parse_mmcif(mmcif: cif.Block, chain_id: str) -> StructureCoords:
     """
     Takes a loaded updated mmCIF as a Gemmi block file and the desired author-specified
     chain ID. Returns a dictionary of four key-value pairs:
