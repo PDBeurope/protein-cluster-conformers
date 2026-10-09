@@ -12,7 +12,7 @@ from numpy import NaN
 logger = getLogger(__name__)
 
 
-def extract_table(mmcif: cif.Block, search_list: "list[str]") -> cif.Table:
+def extract_table(mmcif: cif.Block, search_list: list[str]) -> cif.Table:
     """
     Produces a Gemmi table based on a list of parsed column names in the _atom_site.
     loop.
@@ -37,8 +37,8 @@ def extract_table(mmcif: cif.Block, search_list: "list[str]") -> cif.Table:
 
 
 def fill_missing_unps(
-    structure_coords: "dict[str, list[str|float]]",
-) -> "dict[str, list[str|float]]":
+    structure_coords: dict[str, list[str|float]],
+) -> dict[str, list[str|float]]:
     """
     Given a list of unique UniProt indices and separate lists of 3D Cartesian coords,
     the function inserts NaN values into each coordinate list where a gap in the UniProt
@@ -73,7 +73,7 @@ def fill_missing_unps(
     return structure_coords
 
 
-def parse_mmcif(mmcif: cif.Block, chain_id: str) -> "dict[str, list[str|float]]":
+def parse_mmcif(mmcif: cif.Block, chain_id: str) -> dict[str, list[str|float]]:
     """
     Takes a loaded updated mmCIF as a Gemmi block file and the desired author-specified
     chain ID. Returns a dictionary of four key-value pairs:
