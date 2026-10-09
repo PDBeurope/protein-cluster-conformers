@@ -301,7 +301,7 @@ class ClusterConformations:
             pool.close()  # Marks the pool as closed.
             pool.join()  # Waits for workers to exit.
 
-    def _dd_matx_to_score(self, label: str) -> dict[str: float]:
+    def _dd_matx_to_score(self, label: str) -> dict[str, float]:
         """
         Function to either generate de novo or retrieve existing distance-difference
         matrix, calculate its score and then return the result as a key-value paired
@@ -310,7 +310,7 @@ class ClusterConformations:
 
         :return: Dictionary of the score for the distance difference matrix 
             corresponding to the label.
-        :rtype: dict[str: float]
+        :rtype: dict[str, float]
         """
 
         label_list = label.split("_")
