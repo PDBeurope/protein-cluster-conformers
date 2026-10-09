@@ -38,8 +38,8 @@ logger = logging.getLogger(__name__)
 def generate_matx_diff(
     ca_matx1: ndarray,
     ca_matx2: ndarray,
-    path_save: "PosixPath|str" = None,
-) -> "ndarray|None":
+    path_save: PosixPath | str = None,
+) -> ndarray | None:
     """
     Executes all the functions needed for calculating and saving the difference matrix
     between two matrices. This function does not assume each matrix is identically
@@ -162,7 +162,7 @@ def format_2d_hist(axes, title):
 
 
 def find_largest_distance_from_matxs(
-    path_matxs: PosixPath, dd_matxs_fnames: "list[str]"
+    path_matxs: PosixPath, dd_matxs_fnames: list[str]
 ) -> float:
     """
     Finds the largest distance in all distance difference matrices. Used to set the

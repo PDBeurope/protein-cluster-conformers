@@ -117,7 +117,7 @@ def download_alphafold_mmcif(uniprot: str, path_save: PosixPath) -> PosixPath:
     return path_save_file
 
 
-def download_cluster_results(uniprot: "str", save_dir: "PosixPath") -> None:
+def download_cluster_results(uniprot: str, save_dir: PosixPath) -> None:
     """
     Function to download cluster results from the PDBe's GraphAPI.
 
