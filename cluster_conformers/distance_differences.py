@@ -47,18 +47,18 @@ def generate_matx_diff(
     matrices map in 1-1, with only the final rows/columns of the larger matrix being
     removed.
 
-    :param ca_matx1: First matrix
+    :param ca_matx1: First matrix.
     :type ca_matx1: ndarray
-    :param ca_matx2: Second matrix
+    :param ca_matx2: Second matrix.
     :type ca_matx2: ndarray
-    :param path_save: Path to save location, defaults to None
-    :type path_save: PosixPath|str, optional
-    :param return_matx: Whether to return the difference matrix, defaults to False
-    :type return_matx: bool, optional
-    :return: Returns difference matrix if `return_matx=True`, else the distance matrix
-        is simply saved to `path_save` (if parsded in) and nothing is returned.
-    :rtype: ndarray|None
+    :param path_save: Path to save location. If provided, the difference matrix is
+        saved to this path in addition to being returned. Defaults to None.
+    :type path_save: PosixPath | str, optional
+    :return: The difference matrix after trimming both inputs to the same size and
+        zeroing out differences below the cutoff.
+    :rtype: ndarray
     """
+
 
     # Remove the final n rows/cols from the larger of the two matrices.
     ca_matx1, ca_matx2 = linear_algebra_utils.trim_to_smallest(ca_matx1, ca_matx2)
